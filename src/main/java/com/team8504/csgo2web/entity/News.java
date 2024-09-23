@@ -114,4 +114,20 @@ public class News {
     this.nThumb = nThumb;
   }
 
+  @Override
+  public String toString() {
+    return "News{" +
+            "id=" + id +
+            ", nId=" + nId +
+            ", classtabId='" + classtabId + '\'' +
+            ", nContent='" + nContent + '\'' +
+            ", nCtime=" + nCtime +
+            ", nAuthor='" + nAuthor + '\'' +
+            ", nAddress='" + nAddress + '\'' +
+            ", nImg='" + nImg + '\'' +
+            ", nTitle='" + nTitle + '\'' +
+            ", nDesc='" + nDesc + '\'' +
+            ", nThumb='" + nThumb + '\'' +
+            '}';
+  }
 }

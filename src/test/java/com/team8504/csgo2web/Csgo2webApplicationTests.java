@@ -21,7 +21,7 @@ class Csgo2webApplicationTests {
        List list = jdbcTemplate.query("select * from Userinfo", new BeanPropertyRowMapper(Userinfo.class));
        for(Object o:list){
            Userinfo products = (Userinfo) o;
-           System.out.println(products.getUsername()+" "+products.getPassword());
+           System.out.println(products.getUNickname()+" "+products.getUPsd());
        }
 
     }

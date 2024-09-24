@@ -16,7 +16,7 @@ class NewsDaoImplTest {
     @Test
     void addNews() {
         News news = new News();
-        news.setNId(1);
+        news.setCId(1);
         news.setNTitle("测试标题");
         news.setNAuthor("测试作者");
         news.setNContent("测试内容");
@@ -25,17 +25,31 @@ class NewsDaoImplTest {
         news.setNThumb("测试缩略图片地址");
         news.setNImg("测试图片地址");
         news.setNAddress("测试发布地址");
-        news.setClasstabId("测试所属一级分类");
         newsDao.addNews(news);
         System.out.println("添加新闻成功");
     }
 
     @Test
     void deleteNews() {
+        newsDao.deleteNews(1);
+        System.out.println("删除新闻成功");
     }
 
     @Test
     void updateNews() {
+        News news = new News();
+        news.setNId(1);
+        news.setNTitle("测试标题3");
+        news.setNAuthor("测试作者2");
+        news.setNContent("测试内容2");
+        news.setNCtime(new java.sql.Date(System.currentTimeMillis()));
+        news.setNDesc("测试简介2");
+        news.setNThumb("测试缩略图片地址2");
+        news.setNImg("测试图片地址2");
+        news.setNAddress("测试发布地址2");
+        news.setCId(1);
+        newsDao.updateNews(news);
+        System.out.println("修改新闻成功");
     }
 
     @Test

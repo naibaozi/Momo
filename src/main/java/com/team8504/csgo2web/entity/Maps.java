@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @Data
 @ToString
-public class Map {
+public class Maps {
 
   private long mId;
   private long cId;

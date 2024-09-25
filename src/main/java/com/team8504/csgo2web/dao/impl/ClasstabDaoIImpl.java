@@ -1,6 +1,6 @@
 package com.team8504.csgo2web.dao.impl;
 
-import com.team8504.csgo2web.dao.ClasstabDaoI;
+import com.team8504.csgo2web.dao.ClasstabDaol;
 import com.team8504.csgo2web.entity.Classtab;
 import jakarta.annotation.Resource;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ClasstabDaoIImpl implements ClasstabDaoI {
+public class ClasstabDaoIImpl implements ClasstabDaol {
     @Resource
     JdbcTemplate jdbcTemplate;
 

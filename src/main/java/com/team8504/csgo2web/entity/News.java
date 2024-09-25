@@ -9,14 +9,15 @@ public class News {
 
   private long nId;
   private long cId;
+  private String nTitle;
+  private String nDesc;
+  private String nThumb;
   private String nContent;
   private java.sql.Date nCtime;
   private String nAuthor;
   private String nAddress;
   private String nImg;
-  private String nTitle;
-  private String nDesc;
-  private String nThumb;
+
 
 
 }

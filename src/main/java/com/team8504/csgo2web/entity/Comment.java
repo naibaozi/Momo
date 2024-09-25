@@ -7,11 +7,12 @@ import lombok.ToString;
 @ToString
 public class Comment {
 
-  private long cId;
+  private long comId;
   private long nId;
   private long uId;
   private String cc;
 
 
+  }
 
-}
+

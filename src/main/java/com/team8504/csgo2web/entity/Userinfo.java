@@ -3,10 +3,9 @@ package com.team8504.csgo2web.entity;
 import lombok.Data;
 import lombok.ToString;
 
-
 @Data
 @ToString
-public final class Userinfo {
+public class Userinfo {
 
   private long uId;
   private String uNickname;
@@ -15,5 +14,7 @@ public final class Userinfo {
   private java.sql.Date uCreateTime;
   private String uAvatar;
   private String uSex;
+
+
 
 }

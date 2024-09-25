@@ -8,7 +8,7 @@ import  java.util.List;
 *
 *
 * */
-public interface ClasstabDaoI {
+public interface ClasstabDaol {
     //增
     public boolean insertClasstab(Classtab classtab);
     //删

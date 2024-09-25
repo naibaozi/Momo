@@ -1,5 +1,6 @@
-package com.team8504.csgo2web.dao;
+package com.team8504.csgo2web.dao.impl;
 
+import com.team8504.csgo2web.dao.ClasstabDaoI;
 import com.team8504.csgo2web.entity.Classtab;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
@@ -7,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class ClasstabDaoIImplTest {
     @Resource

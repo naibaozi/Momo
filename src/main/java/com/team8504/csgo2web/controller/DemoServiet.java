@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @Author: zby
+ * @Author: J.C.ZONG
  * @Package: com.team8504.csgo2web.controller
  * @Project: CSGO2WEB
  * @Date: 2024/09/26/上午9:08

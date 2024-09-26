@@ -1,17 +1,17 @@
 package com.team8504.csgo2web.controller;
 
-import com.team8504.csgo2web.dao.UserinfoDao;
-import com.team8504.csgo2web.entity.Userinfo;
+import com.team8504.csgo2web.dao.MapsDao;
+import com.team8504.csgo2web.entity.Maps;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+
 /**
  * @Author: J.C.ZONG
  * @Package: com.team8504.csgo2web.controller
@@ -19,33 +19,26 @@ import java.util.List;
  * @Date: 2024/09/26/上午9:08
  * @Version 0.0
  */
-@WebServlet("/userinfo")
-public class UserinfoServiet extends HttpServlet {
-    //注入userinfo对象
+@WebServlet("/maps")
+public class MapsServiet extends HttpServlet {
     @Resource
-    UserinfoDao userinfoDao;
+    MapsDao mapsDao;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("UserinfoServiet = "+request.getRequestURI());
-
-        //查询用户列表
-        List<Userinfo> userinfoList =  userinfoDao.getUserinfoList();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+        System.out.println("NewsServiet = "+request.getRequestURI());
+        //查询新闻列表
+        List<Maps> MapsList =  mapsDao.getMapsList();
         response.setContentType("text/html;charset=UTF-8");//设置编码格式
         PrintWriter pw = response.getWriter();//创建输出流
-        for (Userinfo userinfo : userinfoList) {
-            pw.println(userinfo.toString());
+        for (Maps maps : MapsList) {
+            pw.println(maps.toString());
             pw.println("<br>");//换行
         }
-        //注册用户
-        PrintWriter out = response.getWriter();
-        //修改用户信息
-        out.println("<html>");
-        //登录验证
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("UserinfoServiet = "+request.getRequestURI());
+        System.out.println("MapsServiet = "+request.getRequestURI());
     }
+
 }

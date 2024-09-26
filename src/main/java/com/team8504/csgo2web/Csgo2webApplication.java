@@ -10,8 +10,17 @@ public class Csgo2webApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(Csgo2webApplication.class, args);
-        System.out.println("http://localhost:8080/userinfo");
+        //demo
         System.out.println("http://localhost:8080/demo");
+        //userinfo启动层
+        System.out.println("http://localhost:8080/userinfo");
+        //teachin启动层
+        System.out.println("http://localhost:8080/teaching");
+        //news启动层
+        System.out.println("http://localhost:8080/news");
+        //maps启动层
+        System.out.println("http://localhost:8080/maps");
+
 
     }
 

@@ -1,6 +1,6 @@
 package com.team8504.csgo2web.dao.impl;
 
-import com.team8504.csgo2web.dao.ClasstabDaol;
+import com.team8504.csgo2web.dao.ClasstabDao;
 import com.team8504.csgo2web.entity.Classtab;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
@@ -9,9 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-class ClasstabDaoIImplTest {
+class ClasstabDaoImplTest {
     @Resource
-    ClasstabDaol classtabDaoI;
+    ClasstabDao classtabDaoI;
 
     @Test
     void insertClasstab() {

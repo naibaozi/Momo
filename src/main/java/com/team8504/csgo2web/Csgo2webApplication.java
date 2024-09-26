@@ -22,7 +22,8 @@ public class Csgo2webApplication {
         System.out.println("http://localhost:8080/maps");
         //background启动层
         System.out.println("http://localhost:8080/background");
-
+        //classtab启动层
+        System.out.println("http://localhost:8080/classtab");
 
     }
 

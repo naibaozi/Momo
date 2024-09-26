@@ -38,9 +38,9 @@ public class UserinfoServiet extends HttpServlet {
             pw.println("<br>");//换行
         }
         //注册用户
-        PrintWriter out = response.getWriter();
+
         //修改用户信息
-        out.println("<html>");
+
         //登录验证
     }
 

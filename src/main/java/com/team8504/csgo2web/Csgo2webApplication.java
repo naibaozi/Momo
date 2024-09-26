@@ -23,6 +23,9 @@ public class Csgo2webApplication {
         //background启动层
         System.out.println("http://localhost:8080/background");
 
+        System.out.println("http://localhost:8080/index.html");
+        System.out.println("http://localhost:8080/login.html");
+
 
     }
 

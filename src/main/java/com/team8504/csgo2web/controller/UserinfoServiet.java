@@ -12,6 +12,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+
+import static org.apache.coyote.http11.Constants.a;
+
 /**
  * @Author: J.C.ZONG
  * @Package: com.team8504.csgo2web.controller
@@ -27,25 +30,61 @@ public class UserinfoServiet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("UserinfoServiet = "+request.getRequestURI());
+        System.out.println("UserinfoServiet = " + request.getRequestURI());
+        String op = request.getParameter("op");//获取操作类型
+        if (op != null) {
+            //查询用户列表
+            if (op.equals("list_userinfo")) {
+                list_userinfo(request, response);
+            }
+            //添加用户信息
+            if (op.equals("add_userinfo")) {
+                //add_userinfo(request, response);
+            }
+            //修改用户信息
+            if (op.equals("update_userinfo")) {
+                //update_userinfo(request, response);
+            }
+            //删除用户信息
+            if (op.equals("delete_userinfo")) {
+                //delete_userinfo(request, response);
+            }
+            //登录验证
+            if (op.equals("login")) {
+                login_userinfo(request, response);
+            }
+
+        }
+    }
 
         //查询用户列表
-        List<Userinfo> userinfoList =  userinfoDao.getUserinfoList();
-        response.setContentType("text/html;charset=UTF-8");//设置编码格式
-        PrintWriter pw = response.getWriter();//创建输出流
-        for (Userinfo userinfo : userinfoList) {
-            pw.println(userinfo.toString());
-            pw.println("<br>");//换行
+        private void list_userinfo (HttpServletRequest request,HttpServletResponse response) throws IOException {
+            List<Userinfo> userinfoList = userinfoDao.getUserinfoList();
+            response.setContentType("text/html;charset=UTF-8");//设置编码格式
+            PrintWriter pw = response.getWriter();//创建输出流
+            for (Userinfo userinfo : userinfoList) {
+                pw.println(userinfo.toString());
+                pw.println("<br>");//换行
+            }
         }
-        //注册用户
+        //登录
+        private void login_userinfo (HttpServletRequest request, HttpServletResponse response) throws IOException {
+            String uEmail = request.getParameter("uEmail");
+            String uPsd = request.getParameter("uPsd");
+            System.out.println("uEmail = " + uEmail);
+            System.out.println("uPsd = " + uPsd);
+            if (true){
+                System.out.println("登录成功");
+                response.sendRedirect(request.getContextPath()+"/index.html");//重定向主页
+            }
 
-        //修改用户信息
+        }
 
-        //登录验证
-    }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("UserinfoServiet = "+request.getRequestURI());
+        this.doGet(request,response);//重定向
     }
 }

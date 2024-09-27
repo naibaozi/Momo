@@ -22,6 +22,8 @@ public class Csgo2webApplication {
         System.out.println("http://localhost:8080/maps");
         //background启动层
         System.out.println("http://localhost:8080/background");
+        //comment启动层
+        System.out.println("http://localhost:8080/comment");
 
         System.out.println("http://localhost:8080/index.html");
         System.out.println("http://localhost:8080/login.html");

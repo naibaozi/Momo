@@ -11,9 +11,10 @@ public class Userinfo {
   private String uNickname;
   private String uPsd;
   private String uEmail;
-  private java.sql.Date uCreateTime;
+  private java.util.Date uCreateTime;
   private String uAvatar;
   private String uSex;
+  private String uStatus;
 
 
 

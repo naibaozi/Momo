@@ -39,7 +39,7 @@ public class UserinfoServiet extends HttpServlet {
             }
             //添加用户信息
             if (op.equals("add_userinfo")) {
-                //add_userinfo(request, response);
+                add_userinfo(request, response);
             }
             //修改用户信息
             if (op.equals("update_userinfo")) {
@@ -54,6 +54,9 @@ public class UserinfoServiet extends HttpServlet {
                 login_userinfo(request, response);
             }
 
+        }else if (op == null){
+            System.out.println("非法请求");
+            response.sendRedirect(request.getContextPath()+"/404.html");
         }
     }
 
@@ -68,14 +71,49 @@ public class UserinfoServiet extends HttpServlet {
             }
         }
         //登录
-        private void login_userinfo (HttpServletRequest request, HttpServletResponse response) throws IOException {
+        private void login_userinfo (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
             String uEmail = request.getParameter("uEmail");
             String uPsd = request.getParameter("uPsd");
-            System.out.println("uEmail = " + uEmail);
-            System.out.println("uPsd = " + uPsd);
-            if (true){
+            Userinfo userinfo = userinfoDao.login(uEmail,uPsd);
+            System.out.println("userinfo = " + userinfo);
+            if (userinfo != null){
                 System.out.println("登录成功");
                 response.sendRedirect(request.getContextPath()+"/index.html");//重定向主页
+            }else{
+                request.getRequestDispatcher("/login.html").forward(request, response);
+            }
+
+        }
+        private void add_userinfo (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+//            private long uId;
+//            private String uNickname;
+//            private String uPsd;
+//            private String uEmail;
+//            private java.util.Date uCreateTime;
+//            private String uAvatar;
+//            private String uSex;
+            String uNickname = request.getParameter("uNickname");
+            String uPsd = request.getParameter("uPsd");
+            String uEmail = request.getParameter("uEmail");
+            String uAvatar = request.getParameter("uAvatar");
+            String uSex = request.getParameter("uSex");
+            String userStatus = "1";
+            Userinfo userinfo = new Userinfo();
+            userinfo.setUNickname(uNickname);
+            userinfo.setUPsd(uPsd);
+            userinfo.setUEmail(uEmail);
+            userinfo.setUAvatar(uAvatar);
+            userinfo.setUSex(uSex);
+            userinfo.setUStatus(userStatus);
+            userinfo.setUCreateTime(new java.util.Date());
+            userinfoDao.saveUserinfo(userinfo);
+
+            if (userinfo!=null){
+                System.out.println("添加用户成功");
+                response.sendRedirect(request.getContextPath()+"/login.html");
+            }else {
+                System.out.println("添加用户失败");
+                request.getRequestDispatcher("/404.html").forward(request, response);
             }
 
         }

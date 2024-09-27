@@ -29,7 +29,7 @@ public class NewsServiet extends HttpServlet {
         System.out.println("NewsServiet = "+request.getRequestURI());
 
         //查询新闻列表
-        List<News> NewsList =  newsDao.getNewsList();
+        List<News> NewsList =  newsDao.getNewsList( Integer.parseInt(request.getParameter("cid")));
         response.setContentType("text/html;charset=UTF-8");//设置编码格式
         PrintWriter pw = response.getWriter();//创建输出流
         for (News news : NewsList) {

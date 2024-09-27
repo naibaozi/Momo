@@ -54,7 +54,7 @@ class NewsDaoImplTest {
 
     @Test
     void getNewsList() {
-        List<News> newsList = newsDao.getNewsList();
+        List<News> newsList = newsDao.getNewsList(1);
        for (News news:newsList){
            System.out.println("新闻信息"+news.toString());
        }

@@ -42,7 +42,7 @@ public class NewsDaoImpl implements NewsDao {
     }
 
     @Override
-    public List<News> getNewsList() {
+    public List<News> getNewsList(Integer cId) {
         String sql = "SELECT * FROM news";
         BeanPropertyRowMapper<News> rowMapper = new BeanPropertyRowMapper<>(News.class);
         return jdbcTemplate.query(sql,rowMapper);

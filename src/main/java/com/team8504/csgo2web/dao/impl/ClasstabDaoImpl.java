@@ -38,7 +38,7 @@ public class ClasstabDaoImpl implements ClasstabDao {
     @Override
     public List<Classtab> getClasstabList() {
         String sql = "select * from classtab";
-        List<Classtab> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Classtab.class));
-        return list;
+        List<Classtab> classtablist = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Classtab.class));
+        return classtablist;
     }
 }

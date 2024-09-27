@@ -7,8 +7,8 @@ import lombok.ToString;
 @ToString
 public class News {
 
-  private long nId;
-  private long cId;
+  private Integer nId;
+  private Integer cId;
   private String nTitle;
   private String nDesc;
   private String nThumb;

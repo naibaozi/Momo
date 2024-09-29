@@ -13,11 +13,6 @@ import java.util.Map;
 class MapsDaoImplTest {
     @Resource
      MapsDao mapsDao;
-    @Test
-    void getMapList() {
-        List<Maps> list = mapsDao.getMapsList();
-        for (Maps maps : list) {
-            System.out.println(maps);
-        }
-    }
+
+
 }

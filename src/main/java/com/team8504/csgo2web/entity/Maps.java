@@ -7,8 +7,8 @@ import lombok.ToString;
 @ToString
 public class Maps {
 
-  private long mId;
-  private long cId;
+  private Integer mId;
+  private Integer cId;
   private String mImg;
   private String mTag;
   private String mDesc;

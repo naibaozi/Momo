@@ -13,9 +13,9 @@ public  class MapsDaoImpl implements MapsDao {
     @Resource
     JdbcTemplate jdbcTemplate;
     @Override
-    public List<Maps> getMapsList() {
-        String sql = "select * from maps";
-        List<Maps> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Maps>(Maps.class));
-        return list;
+    public List<Maps> getMapsList(Integer cId) {
+        String sql = "SELECT * FROM maps WHERE c_id = ?";
+        List<Maps> mapslist = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Maps.class),cId);
+        return mapslist;
     }
 }

@@ -1,5 +1,6 @@
 package com.team8504.csgo2web.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.team8504.csgo2web.dao.MapsDao;
 import com.team8504.csgo2web.entity.Maps;
 import jakarta.annotation.Resource;
@@ -19,26 +20,32 @@ import java.util.List;
  * @Date: 2024/09/26/13:38
  * @Version: 0.0
  */
-@WebServlet("/maps")
+@WebServlet(name = "MapsServiet", urlPatterns = {"/maps"})
 public class MapsServiet extends HttpServlet {
     @Resource
     MapsDao mapsDao;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-        System.out.println("NewsServiet = "+request.getRequestURI());
-        //查询新闻列表
-        List<Maps> MapsList =  mapsDao.getMapsList();
-        response.setContentType("text/html;charset=UTF-8");//设置编码格式
-        PrintWriter pw = response.getWriter();//创建输出流
-        for (Maps maps : MapsList) {
-            pw.println(maps.toString());
-            pw.println("<br>");//换行
-        }
+        this.doPost(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("MapsServiet = "+request.getRequestURI());
+        String op = request.getParameter("op");
+        if (op !=null) {
+            if (op.equals("query")) {
+                String cidStr = request.getParameter("cId");
+                Integer cId=1;
+                if (cidStr != null && !cidStr.equals("")){
+                    cId = Integer.parseInt(cidStr);
+                }
+                List<Maps>mapsList =mapsDao.getMapsList(cId);
+                String jsonString = JSON.toJSONString(mapsList);
+                response.setContentType("text/html;charset=utf-8");
+                response.getWriter().write(jsonString);
+
+            }
+        }
     }
 
 }

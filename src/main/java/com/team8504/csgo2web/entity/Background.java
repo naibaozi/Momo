@@ -8,8 +8,8 @@ import lombok.ToString;
 @ToString
 public class Background {
 
-  private long bId;
-  private long cId;
+  private Integer bId;
+  private Integer cId;
   private String bTitle;
   private String bDesc;
   private String bImg;

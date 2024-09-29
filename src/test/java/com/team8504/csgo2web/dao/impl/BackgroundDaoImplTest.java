@@ -12,11 +12,5 @@ import java.util.List;
 class BackgroundDaoImplTest {
     @Resource
     private BackgroundDao backgroundDao;
-    @Test
-    void getBackgroundList() {
-        List<Background> list = backgroundDao.getBackgroundList();
-        for (Background background : list) {
-            System.out.println(background);
-        }
-    }
+
 }

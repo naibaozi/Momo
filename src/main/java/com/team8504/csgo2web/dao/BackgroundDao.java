@@ -5,5 +5,5 @@ import com.team8504.csgo2web.entity.Background;
 import java.util.List;
 
 public interface BackgroundDao{
-    public List<Background> getBackgroundList();
+    public List<Background> getBackgroundList(Integer cId);
 }

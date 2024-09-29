@@ -14,11 +14,11 @@ import java.io.PrintWriter;
 import java.util.List;
 
 /**
- * @Author: Tao
- * @Package: com.team8504.csgo2web.controller
- * @Project: csgo2web
- * @Date: 2024/09/26/13:38
- * @Version: 0.0
+ * Author: Tao
+ * Package: com.team8504.csgo2web.controller
+ * Project: csgo2web
+ * Date: 2024/09/26/13:38
+ * Version: 0.0
  */
 @WebServlet(name = "MapsServiet", urlPatterns = {"/maps"})
 public class MapsServiet extends HttpServlet {

@@ -15,11 +15,11 @@ import java.io.PrintWriter;
 import java.util.List;
 
 /**
- * @Author: J.C.ZONG
- * @Package: com.team8504.csgo2web.controller
- * @Project: CSGO2WEB
- * @Date: 2024/09/26/上午9:08
- * @Version 0.0
+ * Author: J.C.ZONG
+ * Package: com.team8504.csgo2web.controller
+ * Project: CSGO2WEB
+ * Date: 2024/09/26/上午9:08
+ * Version 0.0
  */
 @WebServlet("/classtab")
 public class ClasstabServiet extends HttpServlet {

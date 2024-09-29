@@ -18,11 +18,11 @@ import java.io.PrintWriter;
 import java.util.List;
 
 /**
- * @Author: KYX
- * @Package: com.team8504.csgo2web.controller
- * @Project: FKJY-Text2
- * @Date: 2024/09/26/上午11:15
- * @Version: 0.0
+ * Author: KYX
+ * Package: com.team8504.csgo2web.controller
+ * Project: FKJY-Text2
+ * Date: 2024/09/26/上午11:15
+ * Version: 0.0
  */
 
 @WebServlet(name = "BackgroundServiet", urlPatterns = {"/background"})

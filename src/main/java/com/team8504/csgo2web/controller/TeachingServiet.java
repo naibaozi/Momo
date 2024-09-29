@@ -14,11 +14,11 @@ import java.io.PrintWriter;
 import java.util.List;
 
 /**
- * @Author: yin
- * @Package: com.team8504.csgo2web.controller
- * @Project: FKJY-Text
- * @Date: 2024/09/27/上午9:25
- * @Version: 0.0
+ * Author: yin
+ * Package: com.team8504.csgo2web.controller
+ * Project: FKJY-Text
+ * Date: 2024/09/27/上午9:25
+ * Version: 0.0
  */
 @WebServlet("/teaching")
 public class TeachingServiet extends HttpServlet {

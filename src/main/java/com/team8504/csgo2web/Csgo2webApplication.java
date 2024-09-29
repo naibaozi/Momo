@@ -25,6 +25,8 @@ public class Csgo2webApplication {
 //        System.out.println("http://localhost:8080/login.html");
 //        System.out.println("http://localhost:8080/register.html");
         System.out.println("http://localhost:8080/index.html");
+        System.out.println("http://localhost:8080/classtab?op=query");
+        System.out.println("http://localhost:8080/news?op=query&cId=1");
 
     }
 

@@ -1,5 +1,6 @@
 package com.team8504.csgo2web.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.team8504.csgo2web.dao.ClasstabDao;
 import com.team8504.csgo2web.entity.Classtab;
 import jakarta.annotation.Resource;
@@ -27,13 +28,18 @@ public class ClasstabServiet extends HttpServlet {
     //查询新闻列表
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        System.out.println("ClasstabServiet ="+request.getRequestURI());
-        List<Classtab> classtabList = classtabDao.getClasstabList();
-        response.setContentType("text/html;charset=UTF-8");//设置编码格式
-        PrintWriter pw = response.getWriter();//创建输出流
-        for (Classtab classtab : classtabList) {
-            pw.println(classtab.toString());
-            pw.println("<br>");//换行
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter writer = response.getWriter();
+        String op = request.getParameter("op");
+        if (op != null){
+            if(op.equals("query")){
+                List<Classtab> classtabList = classtabDao.getClasstabList();
+                String jsonString = JSON.toJSONString(classtabList);
+                writer.write(jsonString);
+                writer.flush();
+                writer.close();
+                System.out.println("查看栏目类型");
+            }
         }
     }
 

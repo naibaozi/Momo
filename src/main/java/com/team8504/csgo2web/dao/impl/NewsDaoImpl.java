@@ -43,9 +43,9 @@ public class NewsDaoImpl implements NewsDao {
 
     @Override
     public List<News> getNewsList(Integer cId) {
-        String sql = "SELECT * FROM news";
-        BeanPropertyRowMapper<News> rowMapper = new BeanPropertyRowMapper<>(News.class);
-        return jdbcTemplate.query(sql,rowMapper);
+        String sql = "SELECT * FROM news WHERE c_id = ?";
+        List<News> newsList= jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(News.class),cId);
+        return newsList;
 
     }
 }

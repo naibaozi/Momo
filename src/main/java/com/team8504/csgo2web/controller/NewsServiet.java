@@ -1,5 +1,6 @@
 package com.team8504.csgo2web.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.team8504.csgo2web.dao.NewsDao;
 import com.team8504.csgo2web.entity.News;
 import jakarta.annotation.Resource;
@@ -19,33 +20,33 @@ import java.util.List;
  * @Date: 2024/09/26/上午9:08
  * @Version 0.0
  */
-@WebServlet("/news")
+@WebServlet(name = "NewsServiet", urlPatterns = {"/news"})
 public class NewsServiet extends HttpServlet {
     @Resource
     NewsDao newsDao;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("NewsServiet = "+request.getRequestURI());
+        this.doPost(request,response);
 
-        //查询新闻列表
-        List<News> NewsList =  newsDao.getNewsList( Integer.parseInt(request.getParameter("cid")));
-        response.setContentType("text/html;charset=UTF-8");//设置编码格式
-        PrintWriter pw = response.getWriter();//创建输出流
-        for (News news : NewsList) {
-            pw.println(news.toString());
-            pw.println("<br>");//换行
-        }
-        //注册用户
-
-        //修改用户信息
-
-        //登录验证
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("NewsServiet = "+request.getRequestURI());
+        String op = request.getParameter("op");
+        if (op != null){
+            if (op.equals("query")){
+                String cidStr = request.getParameter("cId");
+                Integer cId = 1;//默认为1
+                if (cidStr != null && !cidStr.equals("")){
+                    cId = Integer.parseInt(cidStr);
+                }
+                List<News> newsList = newsDao.getNewsList(cId);
+                String jsonString = JSON.toJSONString(newsList);
+                response.setContentType("text/html;charset=utf-8");
+                response.getWriter().write(jsonString);
+            }
+        }
     }
 
 }

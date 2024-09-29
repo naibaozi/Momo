@@ -15,11 +15,11 @@ import java.io.PrintWriter;
 import java.util.List;
 
 /**
- * @Author: yin
+ * @Author: J.C.ZONG
  * @Package: com.team8504.csgo2web.controller
- * @Project: FKJY-Text
- * @Date: 2024/09/27/上午9:25
- * @Version: 0.0
+ * @Project: CSGO2WEB
+ * @Date: 2024/09/26/上午9:08
+ * @Version 0.0
  */
 @WebServlet("/comment")
 public class CommentServiet extends HttpServlet {

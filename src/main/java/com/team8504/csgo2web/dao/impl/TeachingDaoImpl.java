@@ -1,6 +1,7 @@
 package com.team8504.csgo2web.dao.impl;
 
 import com.team8504.csgo2web.dao.TeachingDao;
+import com.team8504.csgo2web.entity.News;
 import com.team8504.csgo2web.entity.Teaching;
 import jakarta.annotation.Resource;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -39,9 +40,9 @@ public class TeachingDaoImpl implements TeachingDao {
     }
 
     @Override
-    public List<Teaching> getTeachingList() {
-        String sql = "select * from teaching";
-        BeanPropertyRowMapper<Teaching> rowMapper = new BeanPropertyRowMapper<>(Teaching.class);
-        return jdbcTemplate.query(sql,rowMapper);
+    public List<Teaching> getTeachingList(Integer cId) {
+        String sql = "SELECT * FROM teaching WHERE c_id = ?";
+        List<Teaching> teachingList= jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(Teaching.class),cId);
+        return teachingList;
     }
 }

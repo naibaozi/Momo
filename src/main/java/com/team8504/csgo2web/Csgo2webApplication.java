@@ -35,7 +35,7 @@ public class Csgo2webApplication {
         System.out.println("http://localhost:8080/news?op=query&cId=1");
         System.out.println("http://localhost:8080/maps?op=query&cId=1");
         System.out.println("http://localhost:8080/background?op=query&cId=1");
-
+        System.out.println("http://localhost:8080/teaching?op=query&cId=1");
     }
 
 }

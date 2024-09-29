@@ -7,8 +7,8 @@ import lombok.ToString;
 @ToString
 public class Teaching {
 
-  private long tId;
-  private long cId;
+  private Integer tId;
+  private Integer cId;
   private String tTitle;
   private String tDesc;
   private String tThumb;

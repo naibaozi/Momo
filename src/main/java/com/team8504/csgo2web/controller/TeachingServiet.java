@@ -1,6 +1,8 @@
 package com.team8504.csgo2web.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.team8504.csgo2web.dao.TeachingDao;
+import com.team8504.csgo2web.entity.Maps;
 import com.team8504.csgo2web.entity.Teaching;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
@@ -20,33 +22,32 @@ import java.util.List;
  * Date: 2024/09/27/上午9:25
  * Version: 0.0
  */
-@WebServlet("/teaching")
+@WebServlet(name = "TeachingServiet", urlPatterns = {"/teaching"})
 public class TeachingServiet extends HttpServlet {
     @Resource
     TeachingDao teachingDao;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("TeachingServiet = "+request.getRequestURI());
-
-        //查询用户列表
-        List<Teaching> teachingList =  teachingDao.getTeachingList();
-        response.setContentType("text/html;charset=UTF-8");//设置编码格式
-        PrintWriter pw = response.getWriter();//创建输出流
-        for (Teaching teaching : teachingList) {
-            pw.println(teaching.toString());
-            pw.println("<br>");//换行
-        }
-        //注册用户
-
-        //修改用户信息
-
-        //登录验证
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+        this.doPost(request, response);
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("TeachingServiet = "+request.getRequestURI());
+        String op = request.getParameter("op");
+        if (op !=null) {
+            if (op.equals("query")) {
+                String cidStr = request.getParameter("cId");
+                Integer cId=1;
+                if (cidStr != null && !cidStr.equals("")){
+                    cId = Integer.parseInt(cidStr);
+                }
+                List<Teaching>teachingList =teachingDao.getTeachingList(cId);
+                String jsonString = JSON.toJSONString(teachingList);
+                response.setContentType("text/html;charset=utf-8");
+                response.getWriter().write(jsonString);
+
+            }
+        }
     }
 
 

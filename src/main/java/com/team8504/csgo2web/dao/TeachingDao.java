@@ -11,5 +11,5 @@ public interface TeachingDao {
     //改
     public boolean updateTeaching(Teaching teaching);
     //查
-    public List<Teaching> getTeachingList();
+    public List<Teaching> getTeachingList(Integer cId);
 }

@@ -21,7 +21,7 @@ import java.util.List;
  * Date: 2024/09/26/上午9:08
  * Version 0.0
  */
-@WebServlet(name = "MapsServiet", urlPatterns = {"/maps"})
+@WebServlet(name = "CommentServiet", urlPatterns = {"/comment"})
 public class CommentServiet extends HttpServlet {
     @Resource
     CommentDao commentDao;

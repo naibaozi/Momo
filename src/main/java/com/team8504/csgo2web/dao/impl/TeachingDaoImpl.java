@@ -24,9 +24,9 @@ public class TeachingDaoImpl implements TeachingDao {
     }
 
     @Override
-    public boolean deleteTeaching(long id) {
+    public boolean deleteTeaching(Integer tId) {
         String sql = "delete from teaching where t_id = ?";
-        int row = jdbcTemplate.update(sql, id);
+        int row = jdbcTemplate.update(sql, tId);
         System.out.println("删除教学成功，受影响行数："+row);
         return false;
     }

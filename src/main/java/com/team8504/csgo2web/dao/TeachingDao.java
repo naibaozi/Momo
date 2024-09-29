@@ -7,7 +7,7 @@ public interface TeachingDao {
     //增
     public boolean addTeaching(Teaching teaching);
     //删
-    public boolean deleteTeaching(long id);
+    public boolean deleteTeaching(Integer tId);
     //改
     public boolean updateTeaching(Teaching teaching);
     //查

@@ -13,4 +13,5 @@ public interface UserinfoDao {
    public List<Userinfo> getUserinfoList();
    //用户登录
    Userinfo login(String uEmail, String uPsd);
+
 }

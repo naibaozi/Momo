@@ -9,6 +9,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -20,6 +23,7 @@ import java.util.List;
  * Date: 2024/09/26/上午9:08
  * Version 0.0
  */
+@CrossOrigin
 @WebServlet(name = "NewsServiet", urlPatterns = {"/news"})
 public class NewsServiet extends HttpServlet {
     @Resource

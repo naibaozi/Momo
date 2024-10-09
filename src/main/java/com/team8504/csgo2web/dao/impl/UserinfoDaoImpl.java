@@ -8,6 +8,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+/**
+ * @author naibaozi
+ */
 @Repository
 public class UserinfoDaoImpl implements UserinfoDao {
     @Resource

@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="static/css/theme-color1.css">
  </head>
  <body>
+<div id="vueapp">
   <header class="header-wrapper header-layout2 position-absolute top-0 start-0 w-100 z-index-step1 mt-30">
    <div class="container position-relative">
     <div class="bg-fluid" data-bg-src="assets/img/shape/header-bg-2-1.jpg">
@@ -44,18 +45,17 @@
         </div>
        </div>
        <div class="col-6 col-lg-6 col-xl-5 text-end">
-        <div id="vueapp">
+
+
+
         <nav class="main-menu menu-style1 mobile-menu-active">
-
          <ul>
-
           <li><a href="index.html">首页</a></li>
           <li><a href="about.html">关于我们</a></li>
           <li class="mega-menu-wrap"><a href="#">教学&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
            <ul class="mega-menu">
-
-            <li v-for="(item,index) in classtabList" :key="index"
-            >
+<!--            栏目渲染开始-->
+            <li v-for="(item,index) in classtabList" :key="index">
              <a href="shop.html">
               <span>{{item.cName}}</span>
               <span style="float:right">{{item.cCnname}}</span>
@@ -64,7 +64,7 @@
               <img :src ="item.cImg" alt="">
              </ul>
             </li>
-
+<!--            栏目渲染结束-->
            </ul>
           </li>
           <li><a href="#">新闻&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
@@ -74,11 +74,13 @@
            </ul>
           </li>
           <li><a href="contact.html">加入我们</a></li>
-
          </ul>
-
         </nav>
-       </div>
+
+
+
+
+
         <button type="button" class="vs-menu-toggle text-white d-inline-block d-lg-none"><i class="fas fa-bars"></i></button>
        </div>
        <div class="col-lg-3 col-xl-5 d-none d-lg-block">
@@ -103,6 +105,10 @@
     </div>
    </div>
   </header>
+
+
+
+
   <section class="vs-hero-wrapper hero-layout2">
    <div class="vs-hero-carousel" data-height="1010" data-sm-height="1200" data-container="1920" data-slidertype="responsive">
     <a href="#" class="ls-arrow text-white d-none d-xl-inline-block" data-ls-go="next">下一个<i class="fas fa-arrow-right"></i></a>
@@ -659,6 +665,8 @@
   <a href="#" class="scrollToTop icon-btn3"><i class="fas fa-arrow-up"></i></a>
   <div class="vs-cursor"></div>
   <div class="vs-cursor2"></div>
+
+ </div>
   <script src="static/js/jquery-1.12.4.min.js"></script>
   <script src="static/js/app.min.js"></script>
   <script src="static/js/vscustom-carousel.min.js"></script>
@@ -672,16 +680,15 @@
  <script src="static/vue/axios.min.js"></script>
  <script src="static/vue/vue.js"></script>
  <script>
+
   const app = new Vue({
    methods:{
-    <!--查询动作-2 查询数据 -->
     //获取列表
     getList(){
      axios.get('http://localhost:8080/classtab?op=query')
              .then(res=>{
               if(res.status === 200){
-               this.classtabList=res.data //   赋值给产品类型列表
-               this.classtabList.cImg = require(`$res.data.cImg`)
+               this.classtabList=res.data
               }
 
              })
@@ -692,20 +699,14 @@
 
    data(){
     return{
-     <!--查询动作-3 info数据初始化集合对象 -->
      classtabList: []
-
-
 
     }
    },
-   <!--查询动作-5 调用方法-->
    mounted(){
-    //Vue生命周期中第四个函数：该函数在执行过程中，已经将数据渲染到界面中，并且已经更新页面。
     this.getList()
    }
   })
-  <!--查询动作-6  Vue实例化页面上要设置一个ID为vueapp的div元素-->
   const vm = app.$mount('#vueapp')
  </script>
 

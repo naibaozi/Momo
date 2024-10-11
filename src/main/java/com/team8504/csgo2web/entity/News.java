@@ -8,7 +8,8 @@ import lombok.ToString;
 public class News {
 
   private Integer nId;
-  private Integer cId;
+  private Integer lId;
+  private String lIdname;
   private String nTitle;
   private String nDesc;
   private String nThumb;

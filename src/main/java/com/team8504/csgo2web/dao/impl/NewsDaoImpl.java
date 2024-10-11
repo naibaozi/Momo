@@ -18,8 +18,8 @@ public class NewsDaoImpl implements NewsDao {
       * */
     @Override
     public boolean addNews(News news) {
-        String sql = "insert into news(n_title,n_author,n_ctime,n_content,n_desc,n_thumb,n_img,n_address,c_id) values(?,?,?,?,?,?,?,?,?)";
-        int update = jdbcTemplate.update(sql,news.getNTitle(),news.getNAuthor(),news.getNCtime(),news.getNContent(),news.getNDesc(),news.getNThumb(),news.getNImg(),news.getNAddress(),news.getCId());
+        String sql = "insert into news(n_title,n_author,n_ctime,n_content,n_desc,n_thumb,n_img,n_address,l_id,l_idname) values(?,?,?,?,?,?,?,?,?,?)";
+        int update = jdbcTemplate.update(sql,news.getNTitle(),news.getNAuthor(),news.getNCtime(),news.getNContent(),news.getNDesc(),news.getNThumb(),news.getNImg(),news.getNAddress(),news.getLId(),news.getLIdname());
         System.out.println("添加新闻成功，受影响行数："+update);
 
         return false;
@@ -35,16 +35,16 @@ public class NewsDaoImpl implements NewsDao {
 
     @Override
     public boolean updateNews(News news) {
-        String sql = "update news set n_title = ?,n_author = ?,n_ctime = ?,n_content = ?,n_desc = ?,n_thumb = ?,n_img = ?,n_address = ?,c_id = ? where n_id = ?";
-        int update = jdbcTemplate.update(sql,news.getNTitle(),news.getNAuthor(),news.getNCtime(),news.getNContent(),news.getNDesc(),news.getNThumb(),news.getNImg(),news.getNAddress(),news.getNId(),news.getCId());
+        String sql = "update news set n_title = ?,n_author = ?,n_ctime = ?,n_content = ?,n_desc = ?,n_thumb = ?,n_img = ?,n_address = ?,l_id = ? ,l_idname=? where n_id = ?";
+        int update = jdbcTemplate.update(sql,news.getNTitle(),news.getNAuthor(),news.getNCtime(),news.getNContent(),news.getNDesc(),news.getNThumb(),news.getNImg(),news.getNAddress(),news.getNId(),news.getLId(),news.getLIdname(),news.getNId());
         System.out.println("更新新闻成功，受影响行数："+update);
         return false;
     }
 
     @Override
-    public List<News> getNewsList(Integer cId) {
-        String sql = "SELECT * FROM news WHERE c_id = ?";
-        List<News> newsList= jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(News.class),cId);
+    public List<News> getNewsList(Integer lId) {
+        String sql = "SELECT * FROM news WHERE l_id = ?";
+        List<News> newsList= jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(News.class),lId);
         return newsList;
 
     }

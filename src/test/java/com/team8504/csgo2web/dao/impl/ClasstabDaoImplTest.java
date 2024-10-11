@@ -38,11 +38,4 @@ class ClasstabDaoImplTest {
 
     }
 
-    @Test
-    void getClasstabList() {
-        List<Classtab> ClasstabList = classtabDaoI.getClasstabList();
-        for (Classtab classtab : ClasstabList){
-            System.out.println("classtab.getCName()="+classtab.getCName());
-        }
-    }
 }

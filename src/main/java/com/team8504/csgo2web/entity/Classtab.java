@@ -7,8 +7,10 @@ import lombok.ToString;
 @ToString
 public class Classtab {
 
-  private long cId;
+  private Integer cId;
   private String cName;
+  private String cCnname;
+  private String cImg;
 
 
 

@@ -12,7 +12,7 @@ public interface ClasstabDao {
     //增
     public boolean insertClasstab(Classtab classtab);
     //删
-    public boolean deleteClasstab(long id);
+    public boolean deleteClasstab(Integer cId);
     //改
     public boolean updateClasstab(Classtab classtab);
     //查

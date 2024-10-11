@@ -21,9 +21,9 @@ public class ClasstabDaoImpl implements ClasstabDao {
     }
 
     @Override
-    public boolean deleteClasstab(long id) {
+    public boolean deleteClasstab(Integer cId) {
         String sql = "delete from classtab where c_id = ?";
-        int row = jdbcTemplate.update(sql, id);
+        int row = jdbcTemplate.update(sql, cId);
         return false;
     }
 
@@ -37,8 +37,16 @@ public class ClasstabDaoImpl implements ClasstabDao {
 
     @Override
     public List<Classtab> getClasstabList() {
-        String sql = "select * from classtab";
+        String sql = "select * from classtab ";
         List<Classtab> classtablist = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Classtab.class));
+//        List<Classtab> classtablist = null;
+//        if (cid != 0){
+//            sql += " and c_id = "+cid;
+//            classtablist = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Classtab.class),cid);
+//        }else {
+//            classtablist = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Classtab.class));
+//        }
+
         return classtablist;
     }
 }

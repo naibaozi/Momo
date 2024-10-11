@@ -44,52 +44,27 @@
         </div>
        </div>
        <div class="col-6 col-lg-6 col-xl-5 text-end">
+        <div id="vueapp">
         <nav class="main-menu menu-style1 mobile-menu-active">
+
          <ul>
+
           <li><a href="index.html">首页</a></li>
           <li><a href="about.html">关于我们</a></li>
           <li class="mega-menu-wrap"><a href="#">教学&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
            <ul class="mega-menu">
-            <li><a href="shop.html">Dust2<span style="float:right">炽热沙城Ⅱ</span></a>
+
+            <li v-for="(item,index) in classtabList" :key="index"
+            >
+             <a href="shop.html">
+              <span>{{item.cName}}</span>
+              <span style="float:right">{{item.cCnname}}</span>
+             </a>
              <ul>
-<!--              <li><a href="index.html">点位</a></li>-->
-<!--              <li><a href="">地图</a></li>-->
-<!--              <li><a href="index-3.html">道具</a></li>-->
-              <img src="static/picture/dust2.jpg" alt="">
+              <img :src ="item.cImg" alt="">
              </ul>
             </li>
-            <li><a href="#">inferno<span style="float:right">炼狱小镇</span></a>
-             <ul>
-<!--              <li><a href="index.html">点位</a></li>-->
-<!--              <li><a href="">地图</a></li>-->
-<!--              <li><a href="index-3.html">道具</a></li>-->
-              <img src="static/picture/inferno.jpg" alt="">
-             </ul>
-            </li>
-            <li><a href="#">mirage<span style="float:right">荒漠迷城</span></a>
-             <ul>
-<!--              <li><a href="index.html">点位</a></li>-->
-<!--              <li><a href="">地图</a></li>-->
-<!--              <li><a href="index-3.html">道具</a></li>-->
-              <img src="static/picture/mirage.jpg" alt="">
-             </ul>
-            </li>
-            <li><a href="#">overpass<span style="float:right">死亡游乐园</span></a>
-             <ul>
-<!--              <li><a href="index.html">点位</a></li>-->
-<!--              <li><a href="">地图</a></li>-->
-<!--              <li><a href="index-3.html">道具</a></li>-->
-              <img src="static/picture/overpass.jpg" alt="">
-             </ul>
-            </li>
-            <li><a href="#">Anubis<span style="float:right">阿努比斯</span></a>
-             <ul>
-<!--              <li><a href="index.html">点位</a></li>-->
-<!--              <li><a href="">地图</a></li>-->
-<!--              <li><a href="index-3.html">道具</a></li>-->
-              <img src="static/picture/anubis.jpg" alt="">
-             </ul>
-            </li>
+
            </ul>
           </li>
           <li><a href="#">新闻&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
@@ -99,8 +74,11 @@
            </ul>
           </li>
           <li><a href="contact.html">加入我们</a></li>
+
          </ul>
+
         </nav>
+       </div>
         <button type="button" class="vs-menu-toggle text-white d-inline-block d-lg-none"><i class="fas fa-bars"></i></button>
        </div>
        <div class="col-lg-3 col-xl-5 d-none d-lg-block">
@@ -690,5 +668,46 @@
   <script src="static/js/map.js"></script>
   <script src="static/js/ajax-mail.js"></script>
   <script src="static/js/main.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.global.js"></script>
+ <script src="static/vue/axios.min.js"></script>
+ <script src="static/vue/vue.js"></script>
+ <script>
+  const app = new Vue({
+   methods:{
+    <!--查询动作-2 查询数据 -->
+    //获取列表
+    getList(){
+     axios.get('http://localhost:8080/classtab?op=query')
+             .then(res=>{
+              if(res.status === 200){
+               this.classtabList=res.data //   赋值给产品类型列表
+               this.classtabList.cImg = require(`$res.data.cImg`)
+              }
+
+             })
+
+    },
+
+   },
+
+   data(){
+    return{
+     <!--查询动作-3 info数据初始化集合对象 -->
+     classtabList: []
+
+
+
+    }
+   },
+   <!--查询动作-5 调用方法-->
+   mounted(){
+    //Vue生命周期中第四个函数：该函数在执行过程中，已经将数据渲染到界面中，并且已经更新页面。
+    this.getList()
+   }
+  })
+  <!--查询动作-6  Vue实例化页面上要设置一个ID为vueapp的div元素-->
+  const vm = app.$mount('#vueapp')
+ </script>
+
  </body>
 </html>

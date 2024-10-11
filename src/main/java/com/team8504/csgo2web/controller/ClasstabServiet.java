@@ -40,6 +40,8 @@ public class ClasstabServiet extends HttpServlet {
                 writer.close();
                 System.out.println("查看栏目类型");
             }
+        }else {
+            System.out.println("无效的业务操作");
         }
     }
 

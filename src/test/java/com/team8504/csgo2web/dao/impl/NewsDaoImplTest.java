@@ -16,7 +16,7 @@ class NewsDaoImplTest {
     @Test
     void addNews() {
         News news = new News();
-        news.setCId(1);
+        news.setLId(1);
         news.setNTitle("测试标题");
         news.setNAuthor("测试作者");
         news.setNContent("测试内容");
@@ -47,14 +47,14 @@ class NewsDaoImplTest {
         news.setNThumb("测试缩略图片地址2");
         news.setNImg("测试图片地址2");
         news.setNAddress("测试发布地址2");
-        news.setCId(1);
+        news.setLId(1);
         newsDao.updateNews(news);
         System.out.println("修改新闻成功");
     }
 
     @Test
     void getNewsList() {
-        List<News> newsList = newsDao.getNewsList(1);
+        List<News> newsList = newsDao.getNewsList(2);
        for (News news:newsList){
            System.out.println("新闻信息"+news.toString());
        }

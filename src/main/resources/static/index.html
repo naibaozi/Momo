@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="static/css/app.min.css">
   <link rel="stylesheet" href="static/css/style.css">
   <link rel="stylesheet" href="static/css/theme-color1.css">
+
  </head>
  <body>
  <div id="vueapp">
@@ -71,8 +72,17 @@
 
           <li><a href="#">新闻&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
            <ul class="sub-menu">
-            <li><a href="blog.html">赛事新闻</a></li>
-            <li><a href="blog-details.html">更新内容</a></li>
+            <li>
+             <router-link :to="/blog.html">
+            赛事新闻
+             </router-link>
+            </li>
+            <li>
+             <router-link :to="/blog.html">
+             更新内容
+             </router-link>
+
+            </li>
            </ul>
           </li>
           <li><a href="contact.html">加入我们</a></li>
@@ -669,38 +679,69 @@
   <script src="static/js/map.js"></script>
   <script src="static/js/ajax-mail.js"></script>
   <script src="static/js/main.js"></script>
-  <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.global.js"></script>
  <script src="static/vue/axios.min.js"></script>
  <script src="static/vue/vue.js"></script>
+ <script src="static/vue/vue-router.global.js"></script>
+
  <script>
 
-  const app = new Vue({
-   methods:{
-    //获取列表
-    getList(){
-     axios.get('http://localhost:8080/classtab?op=query')
-             .then(res=>{
-              if(res.status === 200){
-               this.classtabList=res.data
-              }
+  // const app = new Vue({
+  //  methods:{
+  //   //获取列表
+  //   getList(){
+  //    axios.get('http://localhost:8080/classtab?op=query')
+  //            .then(res=>{
+  //              console.log(res.data)
+  //              this.classtabList=res.data
+  //            })
+  //
+  //   },
+  //
+  //  },
+  //
+  //  data(){
+  //   return{
+  //    classtabList: []
+  //
+  //   }
+  //  },
+  //  mounted(){
+  //   this.getList()
+  //  }
+  // })
+  //
+  // const vm = app.$mount('#vueapp')
+  const {createApp}  = Vue
+  const router = new VueRouter.createRouter({
+   history: VueRouter.createWebHashHistory(),
+   routes: [
+    {path: '/blog.html',query:{'lId':'1'}},
+    {path: '/blog.html',query:{'lId':'2'}}
+   ]
 
-             })
-
-    },
-
-   },
-
+  });
+  const App = createApp({
+   router,
    data(){
     return{
-     classtabList: []
-
+     classtabList:[]
+    }
+   },
+   methods:{
+    getList(){
+     axios.get('http://localhost:8080/classtab?op=query')
+     .then(res=>{
+      console.log(res.data)
+      this.classtabList=res.data
+     })
     }
    },
    mounted(){
     this.getList()
    }
-  })
-  const vm = app.$mount('#vueapp')
+  });
+  App.use(router)
+  App.mount('#vueapp')
  </script>
 
  </body>

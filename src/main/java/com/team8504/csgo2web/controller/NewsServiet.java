@@ -40,12 +40,12 @@ public class NewsServiet extends HttpServlet {
         String op = request.getParameter("op");
         if (op != null){
             if (op.equals("query")){
-                String cidStr = request.getParameter("cId");
-                Integer cId = 1;//默认为1
-                if (cidStr != null && !cidStr.equals("")){
-                    cId = Integer.parseInt(cidStr);
+                String lidStr = request.getParameter("lId");
+                Integer lId = 1;//默认为1
+                if (lidStr != null && !lidStr.equals("")){
+                    lId = Integer.parseInt(lidStr);
                 }
-                List<News> newsList = newsDao.getNewsList(cId);
+                List<News> newsList = newsDao.getNewsList(lId);
                 String jsonString = JSON.toJSONString(newsList);
                 response.setContentType("text/html;charset=utf-8");
                 response.getWriter().write(jsonString);

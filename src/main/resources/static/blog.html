@@ -564,18 +564,36 @@
              })
 
     },
+    getNews(){
+     console.log("进入getNews")
+     console.log("传递的参数"+this.$route.query.lId)
+     axios.get('http://localhost:8080/news?op=query&lId='+this.$route.query.lId)
+             .then(res=>{
+              if(res.status === 200){
+               this.newsList=res.data
+              }
+
+             })
+    }
 
    },
 
    data(){
     return{
-     classtabList: []
+     classtabList: [],
+     newsList: []
 
     }
    },
    mounted(){
     this.getList()
-   }
+    this.getNews()
+   },
+   created() {
+    console.log(this.$route)
+    this.id = this.$route.query.id;//获取上个页面传递的id,在下面获取数据的时候先提交id
+   },
+
   })
   const vm = app.$mount('#vueapp')
  </script>

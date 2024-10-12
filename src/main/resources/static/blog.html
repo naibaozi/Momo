@@ -135,19 +135,19 @@
      <div class="col-lg">
       <div class="vs-blog" v-for="(item,index) in newsList" :key="index">
        <div class="blog-image image-scale-hover">
-        <a href=""><img :src ="item.nImg" class="w-100" alt=""></a>
+        <a v-bind:href="'blog-details.html?lId='+item.lId+'&nId='+item.nId"><img :src ="item.nImg" class="w-100" alt=""></a>
        </div>
        <div class="blog-meta bg-smoke has-border">
-        <a href="#"><i class="fas fa-calendar-alt"></i>{{item.nCtime}}</a>
-        <a href="#"><i class="fas fa-location-arrow"></i>{{item.nAddress}}</a>
+        <i class="fas fa-calendar-alt"></i>{{item.nCtime}}
+       <i class="fas fa-location-arrow"></i>{{item.nAddress}}
        </div>
 
            <div class="blog-content bg-smoke">
-            <h2 class="blog-title h4 font-theme"><a href="blog-details.html">{{item.nTitle}}</a></h2>
+            <h2 class="blog-title h4 font-theme">{{item.nTitle}}</h2>
             <p>{{item.nDesc}}</p>
             <div class="author-box d-flex">
                  <div class="media-body align-self-center">
-                  <h6 class="name mb-0 text-normal lh-base"><a href="#">作者：{{item.nAuthor}}</a></h6>
+                  <h6 class="name mb-0 text-normal lh-base">作者：{{item.nAuthor}}</h6>
                  </div>
             </div>
            </div>
@@ -250,9 +250,9 @@
   <script src="static/js/map.js"></script>
   <script src="static/js/ajax-mail.js"></script>
   <script src="static/js/main.js"></script>
-  <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.global.js"></script>
   <script src="static/vue/axios.min.js"></script>
   <script src="static/vue/vue.js"></script>
+  <script src="static/vue/vue-router.global.js"></script>
  <script>
   const {createApp}  = Vue
   const App = createApp({
@@ -271,7 +271,7 @@
     getNews(){
      console.log("进入getNews")
      console.log("传递的参数"+this.lId)
-     axios.get('http://localhost:8080/news?op=query&'+this.lId)
+     axios.get('http://localhost:8080/news?op=querylist&'+this.lId)
              .then(res=>{
               if(res.status === 200){
                this.newsList=res.data

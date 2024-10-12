@@ -17,4 +17,6 @@ public interface NewsDao {
     public boolean updateNews(News news);
     //查
     public List<News> getNewsList(Integer lId);
+
+    public List<News> getNews(Integer nId);
 }

@@ -1,7 +1,9 @@
 package com.team8504.csgo2web.dao.impl;
 
 import com.team8504.csgo2web.dao.NewsDao;
+import com.team8504.csgo2web.dao.ZdtabDao;
 import com.team8504.csgo2web.entity.News;
+import com.team8504.csgo2web.entity.Zdtab;
 import jakarta.annotation.Resource;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -45,6 +47,13 @@ public class NewsDaoImpl implements NewsDao {
     public List<News> getNewsList(Integer lId) {
         String sql = "SELECT * FROM news WHERE l_id = ?";
         List<News> newsList= jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(News.class),lId);
+        return newsList;
+
+    }
+    @Override
+    public List<News> getNews(Integer nId) {
+        String sql = "SELECT * FROM news WHERE n_id = ?";
+        List<News> newsList= jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(News.class),nId);
         return newsList;
 
     }

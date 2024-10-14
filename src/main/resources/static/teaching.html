@@ -19,7 +19,9 @@
  <link rel="stylesheet" href="static/css/theme-color1.css">
 </head>
 <body>
+<!-- 公共头部 vueapp 开始-->
 <div id="vueapp">
+<!-- TODO：修改完善完成相应的功能-->
  <header class="header-wrapper header-layout1 position-absolute top-0 start-0 w-100 z-index-step1">
   <div class="header-top">
    <div class="container">
@@ -52,6 +54,7 @@
        <ul>
         <li><a href="index.html">首页</a></li>
         <li><a href="about.html">关于我们</a></li>
+        <!--        TODO:修改相对应的代码完成带参数跳转指定内容-->
         <li class="mega-menu-wrap"><a href="#">教学&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
          <ul class="mega-menu">
           <!--            栏目渲染开始-->
@@ -67,6 +70,7 @@
           <!--            栏目渲染结束-->
          </ul>
         </li>
+        <!--        TODO：结束-->
 
 
         <li><a href="#">新闻&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
@@ -111,46 +115,36 @@
    </div>
   </div>
  </header>
+</div>
+<!--公共头部 vueapp结束-->
+
+
+<!--内容1开始  TODO：修改完善完成相应的功能-->
  <div class="breadcumb-wrapper breadcumb-layout1 pt-200 pb-50" data-bg-src="assets/img/breadcumb/breadcumb-1.jpg" data-overlay="">
   <div class="container z-index-common">
    <div class="breadcumb-content text-center">
-    <h1 class="breadcumb-title h1 text-white my-0">新闻列表页</h1>
-    <h2 class="breadcumb-bg-title">News</h2>
+    <h1 class="breadcumb-title h1 text-white my-0">教学</h1>
+    <h2 class="breadcumb-bg-title">TEACHING</h2>
     <ul class="breadcumb-menu-style1 text-white mx-auto fs-xs">
      <li><a href="index.html"><i class="fas fa-home"></i>首页</a></li>
-     <li class="active">{{lIdname}}</li>
+<!--     TODO:修改代码完成目标-->
+     <li class="active">{{传递进来的地图名称}}-{{选中的标签}}</li>
+<!--     TODO:结束-->
     </ul>
    </div>
   </div>
  </div>
-</div>
  <section class="vs-product-wrapper vs-product-layout2 space-top newsletter-pb">
    <div class="container">
     <div class="row">
      <div class="col-lg-8">
-      <div class="row align-items-center mb-30">
-       <div class="col-xl-5">
-        <p class="mb-0">Showing 1–24 of 37 item(s)</p>
-       </div>
-       <div class="col-xl-7 mt-3 mt-xl-0">
-        <div class="sort-btn d-flex flex-wrap justify-content-between justify-content-xl-end align-items-start">
-         <select class="form-select form-select-lg" aria-label=".form-select-lg example"><option selected="selected">Open this select menu</option><option value="1">One</option><option value="2">Two</option><option value="3">Three</option></select>
-         <div class="d-flex mt-3 mt-sm-0">
-          <a href="#" class="icon-btn3 active"><i class="fas fa-border-all"></i></a>
-          <a href="#" class="icon-btn3"><i class="fas fa-list"></i></a>
-         </div>
-        </div>
-       </div>
-      </div>
       <div class="row">
        <div class="col-sm-6">
         <div class="vs-product">
          <div class="product-img">
           <a href="teaching-details.html"><img src="static/picture/product-2-1.jpg" class="w-100" alt="Product Image"></a>
           <div class="cart-btn-group">
-           <a href="#" class="icon-btn3"><i class="far fa-heart"></i></a>
-           <a href="#" class="vs-btn">Add to cart</a>
-           <a href="#" class="icon-btn3"><i class="far fa-search"></i></a>
+           <a href="#" class="vs-btn">点击查看详情</a>
           </div>
          </div>
          <div class="product-content">
@@ -172,9 +166,7 @@
           <span class="label">HOT</span> 
           <a href="teaching-details.html"><img src="static/picture/product-2-2.jpg" class="w-100" alt="Product Image"></a>
           <div class="cart-btn-group">
-           <a href="#" class="icon-btn3"><i class="far fa-heart"></i></a> 
-           <a href="#" class="vs-btn">Add to cart</a> 
-           <a href="#" class="icon-btn3"><i class="far fa-search"></i></a>
+           <a href="#" class="vs-btn">点击查看详情</a>
           </div>
          </div>
          <div class="product-content">
@@ -195,9 +187,7 @@
          <div class="product-img">
           <a href="teaching-details.html"><img src="static/picture/product-2-3.jpg" class="w-100" alt="Product Image"></a>
           <div class="cart-btn-group">
-           <a href="#" class="icon-btn3"><i class="far fa-heart"></i></a> 
-           <a href="#" class="vs-btn">Add to cart</a> 
-           <a href="#" class="icon-btn3"><i class="far fa-search"></i></a>
+           <a href="#" class="vs-btn">点击查看详情</a>
           </div>
          </div>
          <div class="product-content">
@@ -218,9 +208,7 @@
          <div class="product-img">
           <a href="teaching-details.html"><img src="static/picture/product-2-4.jpg" class="w-100" alt="Product Image"></a>
           <div class="cart-btn-group">
-           <a href="#" class="icon-btn3"><i class="far fa-heart"></i></a> 
-           <a href="#" class="vs-btn">Add to cart</a> 
-           <a href="#" class="icon-btn3"><i class="far fa-search"></i></a>
+           <a href="#" class="vs-btn">点击查看详情</a>
           </div>
          </div>
          <div class="product-content">
@@ -241,9 +229,7 @@
          <div class="product-img">
           <a href="teaching-details.html"><img src="static/picture/product-2-5.jpg" class="w-100" alt="Product Image"></a>
           <div class="cart-btn-group">
-           <a href="#" class="icon-btn3"><i class="far fa-heart"></i></a> 
-           <a href="#" class="vs-btn">Add to cart</a> 
-           <a href="#" class="icon-btn3"><i class="far fa-search"></i></a>
+           <a href="#" class="vs-btn">点击查看详情</a>
           </div>
          </div>
          <div class="product-content">
@@ -264,9 +250,7 @@
          <div class="product-img">
           <a href="teaching-details.html"><img src="static/picture/product-2-6.jpg" class="w-100" alt="Product Image"></a>
           <div class="cart-btn-group">
-           <a href="#" class="icon-btn3"><i class="far fa-heart"></i></a> 
-           <a href="#" class="vs-btn">Add to cart</a> 
-           <a href="#" class="icon-btn3"><i class="far fa-search"></i></a>
+           <a href="#" class="vs-btn">点击查看详情</a>
           </div>
          </div>
          <div class="product-content">
@@ -283,6 +267,7 @@
         </div>
        </div>
       </div>
+<!--      分页功能还没做不要动-->
       <div class="pagination-wrapper pagination-layout1 mt-lg-30 mb-30">
        <ul>
         <li><a href="#" class="active"><span class="text">1</span></a></li>
@@ -291,6 +276,7 @@
         <li><a href="#"><span class="text">4</span></a></li>
        </ul>
       </div>
+<!--      分页结束-->
      </div>
      <div class="col-lg-4">
       <aside class="sidebar-area sticky-top overflow-hidden">
@@ -300,18 +286,7 @@
          <button type="submit"><i class="far fa-search"></i></button>
         </form>
        </div>
-<!--       <h3 class="sidebox-title-v2 h5">Filter by Price</h3>-->
-<!--       <div class="vs-sidebox-v2">-->
-<!--        <div class="range-slider-area">-->
-<!--         <div id="slider-range"></div>-->
-<!--         <div class="price-area">-->
-<!--          <span>Price:</span> -->
-<!--          <input type="text" readonly="readonly" id="amount">-->
-<!--         </div>-->
-<!--         <a href="#" class="vs-btn vs-style1">Filter</a>-->
-<!--        </div>-->
-<!--       </div>-->
-       <h3 class="sidebox-title-v2 h5">Categories</h3>
+       <h3 class="sidebox-title-v2 h5">栏目</h3>
        <div class="vs-sidebox-v2">
         <ul class="vs-cat-list1">
          <li><a href="blog.html">点位 <span class="cat-number">10</span></a></li>
@@ -320,93 +295,14 @@
          <li><a href="blog.html">技巧 <span class="cat-number">05</span></a></li>
         </ul>
        </div>
-<!--       <h3 class="sidebox-title-v2 h5">Filter by Price</h3>-->
-<!--       <div class="vs-sidebox-v2">-->
-<!--        <div class="latest-product-v1">-->
-<!--         <div class="d-flex post">-->
-<!--          <div class="media-img mr-25">-->
-<!--           <img src="static/picture/p-thumb-1-1.jpg" alt="Product Thumb">-->
-<!--          </div>-->
-<!--          <div class="media-body align-self-center">-->
-<!--           <div class="text-yellow fs-12">-->
-<!--            <i class="fas fa-star"></i> -->
-<!--            <i class="fas fa-star"></i> -->
-<!--            <i class="fas fa-star"></i> -->
-<!--            <i class="far fa-star"></i> -->
-<!--            <i class="far fa-star"></i>-->
-<!--           </div>-->
-<!--           <h4 class="h6 font-theme text-normal mb-0"><a href="#" class="text-inherit">Dolor sit cing elit</a></h4>-->
-<!--           <del class="fs-12">-->
-<!--            $200.00-->
-<!--           </del> -->
-<!--           <span class="text-theme2 fs-12 ms-2">$150.00</span>-->
-<!--          </div>-->
-<!--         </div>-->
-<!--         <div class="d-flex post">-->
-<!--          <div class="media-img mr-25">-->
-<!--           <img src="static/picture/p-thumb-1-2.jpg" alt="Product Thumb">-->
-<!--          </div>-->
-<!--          <div class="media-body align-self-center">-->
-<!--           <div class="text-yellow fs-12">-->
-<!--            <i class="fas fa-star"></i> -->
-<!--            <i class="fas fa-star"></i> -->
-<!--            <i class="fas fa-star"></i> -->
-<!--            <i class="far fa-star"></i> -->
-<!--            <i class="far fa-star"></i>-->
-<!--           </div>-->
-<!--           <h4 class="h6 font-theme text-normal mb-0"><a href="#" class="text-inherit">Dolor sit cing elit</a></h4>-->
-<!--           <del class="fs-12">-->
-<!--            $200.00-->
-<!--           </del> -->
-<!--           <span class="text-theme2 fs-12 ms-2">$150.00</span>-->
-<!--          </div>-->
-<!--         </div>-->
-<!--         <div class="d-flex post">-->
-<!--          <div class="media-img mr-25">-->
-<!--           <img src="static/picture/p-thumb-1-3.jpg" alt="Product Thumb">-->
-<!--          </div>-->
-<!--          <div class="media-body align-self-center">-->
-<!--           <div class="text-yellow fs-12">-->
-<!--            <i class="fas fa-star"></i> -->
-<!--            <i class="fas fa-star"></i> -->
-<!--            <i class="fas fa-star"></i> -->
-<!--            <i class="far fa-star"></i> -->
-<!--            <i class="far fa-star"></i>-->
-<!--           </div>-->
-<!--           <h4 class="h6 font-theme text-normal mb-0"><a href="#" class="text-inherit">Dolor sit cing elit</a></h4>-->
-<!--           <del class="fs-12">-->
-<!--            $200.00-->
-<!--           </del> -->
-<!--           <span class="text-theme2 fs-12 ms-2">$150.00</span>-->
-<!--          </div>-->
-<!--         </div>-->
-<!--         <div class="d-flex post">-->
-<!--          <div class="media-img mr-25">-->
-<!--           <img src="static/picture/p-thumb-1-4.jpg" alt="Product Thumb">-->
-<!--          </div>-->
-<!--          <div class="media-body align-self-center">-->
-<!--           <div class="text-yellow fs-12">-->
-<!--            <i class="fas fa-star"></i> -->
-<!--            <i class="fas fa-star"></i> -->
-<!--            <i class="fas fa-star"></i> -->
-<!--            <i class="far fa-star"></i> -->
-<!--            <i class="far fa-star"></i>-->
-<!--           </div>-->
-<!--           <h4 class="h6 font-theme text-normal mb-0"><a href="#" class="text-inherit">Dolor sit cing elit</a></h4>-->
-<!--           <del class="fs-12">-->
-<!--            $200.00-->
-<!--           </del> -->
-<!--           <span class="text-theme2 fs-12 ms-2">$150.00</span>-->
-<!--          </div>-->
-<!--         </div>-->
-<!--        </div>-->
-<!--       </div>-->
       </aside>
      </div>
     </div>
    </div>
   </section>
+<!--内容1结束-->
 
+<!--公共底部-->
   <section class="vs-newsletter-wrapper bg-dark z-index-step1">
    <div class="container">
     <div class="position-relative">
@@ -471,7 +367,6 @@
   <a href="#" class="scrollToTop icon-btn3"><i class="far fa-angle-up"></i></a>
   <div class="vs-cursor"></div>
   <div class="vs-cursor2"></div>
-
   <script src="static/js/jquery-1.12.4.min.js"></script>
   <script src="static/js/app.min.js"></script>
   <script src="static/js/vscustom-carousel.min.js"></script>
@@ -484,7 +379,8 @@
   <script src="static/vue/axios.min.js"></script>
   <script src="static/vue/vue.js"></script>
   <script src="static/vue/vue-router.global.js"></script>
-  <script>
+<!--  头部实例-->
+<script>
    const {createApp}  = Vue
    const App = createApp({
     methods:{
@@ -522,7 +418,8 @@
       lId:'',
       isLoading: true,
       lIdname:'',
-      newsList: []
+      newsList: [],
+      tag:'点位'
 
      }
     },
@@ -537,5 +434,9 @@
    })
    App.mount('#vueapp')
   </script>
- </body>
+<!--内容1实例-->
+<script>
+<!-- TODO待完成代码-->
+</script>
+</body>
 </html>

@@ -21,97 +21,99 @@
  <body>
  <div id="vueapp">
 
-   <header class="header-wrapper header-layout1 position-absolute top-0 start-0 w-100 z-index-step1">
-    <div class="header-top">
-     <div class="container">
-      <div class="row py-md-2">
-       <div class="col-sm-6 d-none d-md-block">
-        <p class="mb-0 fs-xs text-light">看看您喜欢的 <a class="text-white" href="team.html"><u class="fab fa-xbox">&nbsp;战队</u></a></p>
+  <header class="header-wrapper header-layout1 position-absolute top-0 start-0 w-100 z-index-step1">
+   <div class="header-top">
+    <div class="container">
+     <div class="row py-md-2">
+      <div class="col-sm-6 d-none d-md-block">
+       <p class="mb-0 fs-xs text-light">看看您喜欢的 <a class="text-white" href="team.html"><u class="fab fa-xbox">&nbsp;战队</u></a></p>
+      </div>
+      <div class="col-sm-6 text-end d-none d-md-block">
+       <ul class="social-links fs-xs text-white">
+        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fab fa-twitch"></i></a></li>
+        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="header-main" data-overlay="black" data-opacity="7">
+    <div class="container position-relative">
+     <div class="row align-items-center">
+      <div class="col-6 col-lg-4 d-block d-xl-none py-3 py-xl-0">
+       <div class="header-logo">
+        <a href="index.html"><img src="static/picture/logo-2.png" alt=" "></a>
        </div>
-       <div class="col-sm-6 text-end d-none d-md-block">
-        <ul class="social-links fs-xs text-white">
-         <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-         <li><a href="#"><i class="fab fa-twitch"></i></a></li>
-         <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-         <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+      </div>
+      <div class="col-6 col-lg-8 col-xl-5 text-end text-xl-start">
+       <nav class="main-menu menu-style1 mobile-menu-active" data-expand="992">
+        <ul>
+         <li><a href="index.html">首页</a></li>
+         <li><a href="about.html">关于我们</a></li>
+         <!--        TODO:修改相对应的代码完成带参数跳转指定内容-->
+         <li class="mega-menu-wrap"><a href="#">教学&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
+          <ul class="mega-menu">
+           <!--            栏目渲染开始-->
+           <li v-for="(item,index) in classtabList" :key="index">
+            <a href="teaching.html">
+             <span>{{item.cName}}</span>
+             <span style="float:right">{{item.cCnname}}</span>
+            </a>
+            <ul>
+             <img :src ="item.cImg" alt="">
+            </ul>
+           </li>
+           <!--            栏目渲染结束-->
+          </ul>
+         </li>
+         <!--        TODO：结束-->
+
+
+         <li><a href="#">新闻&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
+          <ul class="sub-menu">
+           <li>
+            <a v-bind:href="'blog.html?lId='+1">
+             <span>赛事新闻</span>
+            </a>
+
+           </li>
+           <li>
+
+            <a v-bind:href="'blog.html?lId='+2">
+             <span>更新内容</span>
+            </a>
+
+
+           </li>
+          </ul>
+         </li>
+         <li><a href="contact.html">加入我们</a></li>
+        </ul>
+       </nav>
+       <button type="button" class="vs-menu-toggle text-white d-inline-block d-lg-none"><i class="far fa-bars"></i></button>
+      </div>
+
+      <div class="col-md-4 col-lg-2 text-center d-none d-xl-block">
+       <div class="header-logo1">
+        <a href="index.html"><img src="static/picture/logo-2.png" alt="Zocker"></a>
+       </div>
+      </div>
+      <div class="col-md-4 col-lg-5 d-none d-xl-block">
+       <div class="header-right d-flex align-items-center justify-content-end">
+        <a href="#" class="vs-btn outline1 d-none d-xl-inline-block"><i class="fab fa-steam"></i><strong>&nbsp;Goto Steam</strong></a>
+        <ul class="header-list1 list-style-none ml-30">
+         <li><button class="searchBoxTggler"><i class="fas fa-search"></i></button></li>
+         <li><button class="sideMenuToggler"><i class="fas fa-user-alt"></i></button></li>
         </ul>
        </div>
       </div>
      </div>
     </div>
-    <div class="header-main" data-overlay="black" data-opacity="7">
-     <div class="container position-relative">
-      <div class="row align-items-center">
-       <div class="col-6 col-lg-4 d-block d-xl-none py-3 py-xl-0">
-        <div class="header-logo">
-         <a href="index.html"><img src="static/picture/logo-2.png" alt=" "></a>
-        </div>
-       </div>
-       <div class="col-6 col-lg-8 col-xl-5 text-end text-xl-start">
-        <nav class="main-menu menu-style1 mobile-menu-active" data-expand="992">
-         <ul>
-          <li><a href="index.html">首页</a></li>
-          <li><a href="about.html">关于我们</a></li>
-          <li class="mega-menu-wrap"><a href="#">教学&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
-           <ul class="mega-menu">
-            <!--            栏目渲染开始-->
-            <li v-for="(item,index) in classtabList" :key="index">
-             <a href="teaching.html">
-              <span>{{item.cName}}</span>
-              <span style="float:right">{{item.cCnname}}</span>
-             </a>
-             <ul>
-              <img :src ="item.cImg" alt="">
-             </ul>
-            </li>
-            <!--            栏目渲染结束-->
-           </ul>
-          </li>
-
-
-          <li><a href="#">新闻&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
-           <ul class="sub-menu">
-            <li>
-             <a v-bind:href="'blog.html?lId='+1">
-              <span>赛事新闻</span>
-             </a>
-
-            </li>
-            <li>
-
-             <a v-bind:href="'blog.html?lId='+2">
-              <span>更新内容</span>
-             </a>
-
-
-            </li>
-           </ul>
-          </li>
-          <li><a href="contact.html">加入我们</a></li>
-         </ul>
-        </nav>
-        <button type="button" class="vs-menu-toggle text-white d-inline-block d-lg-none"><i class="far fa-bars"></i></button>
-       </div>
-
-       <div class="col-md-4 col-lg-2 text-center d-none d-xl-block">
-        <div class="header-logo1">
-         <a href="index.html"><img src="static/picture/logo-2.png" alt="Zocker"></a>
-        </div>
-       </div>
-       <div class="col-md-4 col-lg-5 d-none d-xl-block">
-        <div class="header-right d-flex align-items-center justify-content-end">
-         <a href="#" class="vs-btn outline1 d-none d-xl-inline-block"><i class="fab fa-steam"></i><strong>&nbsp;Goto Steam</strong></a>
-         <ul class="header-list1 list-style-none ml-30">
-          <li><button class="searchBoxTggler"><i class="fas fa-search"></i></button></li>
-          <li><button class="sideMenuToggler"><i class="fas fa-user-alt"></i></button></li>
-         </ul>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </header>
+   </div>
+  </header>
 
 
 

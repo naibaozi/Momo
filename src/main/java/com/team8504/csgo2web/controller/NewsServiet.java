@@ -50,6 +50,16 @@ public class NewsServiet extends HttpServlet {
                 response.setContentType("text/html;charset=utf-8");
                 response.getWriter().write(jsonString);
             }
+            if (op.equals("query")){
+                List<News> newsList = newsDao.getNewsAll();
+                response.setContentType("text/html;charset=UTF-8");
+                PrintWriter writer = response.getWriter();
+                String jsonString = JSON.toJSONString(newsList);
+                writer.write(jsonString);
+                writer.flush();
+                writer.close();
+                System.out.println("查看栏目类型");
+            }
             if(op.equals("querynews")){
                 String nIdStr = request.getParameter("nId");
                 Integer nId = 1;

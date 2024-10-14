@@ -19,4 +19,5 @@ public interface NewsDao {
     public List<News> getNewsList(Integer lId);
 
     public List<News> getNews(Integer nId);
+    public List<News> getNewsAll();
 }

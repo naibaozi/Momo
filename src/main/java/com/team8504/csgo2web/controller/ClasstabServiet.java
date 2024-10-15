@@ -40,7 +40,19 @@ public class ClasstabServiet extends HttpServlet {
                 writer.close();
                 System.out.println("查看栏目类型");
             }
-        }else {
+        }if (op.equals("queryname")){
+            String cIdStr = request.getParameter("cId");
+            Integer cId = 1;
+            if (cIdStr != null && !cIdStr.equals("")){
+                cId = Integer.parseInt(cIdStr);
+            }
+            List<Classtab> classtabList = classtabDao.getClasstabById(cId);
+            String jsonString = JSON.toJSONString(classtabList);
+            writer.write(jsonString);
+            writer.flush();
+
+        }
+        else {
             System.out.println("无效的业务操作");
         }
     }

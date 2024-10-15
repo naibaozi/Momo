@@ -17,6 +17,7 @@ public class Teaching {
   private String tContent;
   private String tImg;
   private String tTag;
+  private String tTagname;
 
 
 

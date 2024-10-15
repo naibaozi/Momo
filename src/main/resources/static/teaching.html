@@ -59,7 +59,7 @@
          <ul class="mega-menu">
           <!--            栏目渲染开始-->
           <li v-for="(item,index) in classtabList" :key="index">
-           <a href="teaching.html">
+           <a v-bind:href="'/teaching.html?cId='+item.cId">
             <span>{{item.cName}}</span>
             <span style="float:right">{{item.cCnname}}</span>
            </a>
@@ -120,6 +120,7 @@
 
 
 <!--内容1开始  TODO：修改完善完成相应的功能-->
+<div id="teachapp">
  <div class="breadcumb-wrapper breadcumb-layout1 pt-200 pb-50" data-bg-src="assets/img/breadcumb/breadcumb-1.jpg" data-overlay="">
   <div class="container z-index-common">
    <div class="breadcumb-content text-center">
@@ -128,7 +129,7 @@
     <ul class="breadcumb-menu-style1 text-white mx-auto fs-xs">
      <li><a href="index.html"><i class="fas fa-home"></i>首页</a></li>
 <!--     TODO:修改代码完成目标-->
-     <li class="active">{{传递进来的地图名称}}-{{选中的标签}}</li>
+     <li class="active">{{classname}}-{{tagname}}</li>
 <!--     TODO:结束-->
     </ul>
    </div>
@@ -138,8 +139,9 @@
    <div class="container">
     <div class="row">
      <div class="col-lg-8">
-      <div class="row">
-       <div class="col-sm-6">
+
+      <div class="row" v-if='this.tag==="dw"'>
+       <div class="col-sm-6" v-for="(item,index) in dwList" :key="index" >
         <div class="vs-product">
          <div class="product-img">
           <a href="teaching-details.html"><img src="static/picture/product-2-1.jpg" class="w-100" alt="Product Image"></a>
@@ -148,121 +150,57 @@
           </div>
          </div>
          <div class="product-content">
-          <div class="text-yellow fs-xs mb-2">
-           <i class="fas fa-star"></i> 
-           <i class="fas fa-star"></i> 
-           <i class="fas fa-star"></i> 
-           <i class="far fa-star"></i> 
-           <i class="far fa-star"></i>
-          </div>
-          <h3 class="product-name text-normal font-theme fs-20 lh-base mb-2"><a class="text-inherit" href="teaching-details.html">Continually exploit business information portals</a></h3>
-          <strong class="fs-18 text-theme2">$200.50</strong>
+          <h3 class="product-name text-normal font-theme fs-20 lh-base mb-2"><a class="text-inherit" href="teaching-details.html">{{item.tTitle}}</a></h3>
+          <p class="fs-8 text-theme2" style="font-size: 14px">{{item.tDesc}}</p>
          </div>
         </div>
        </div>
-       <div class="col-sm-6">
+      </div>
+
+      <div class="row" v-if='this.tag==="dj"'>
+       <div class="col-sm-6" v-for="(item,index) in djList" :key="index">
         <div class="vs-product">
          <div class="product-img">
-          <span class="label">HOT</span> 
-          <a href="teaching-details.html"><img src="static/picture/product-2-2.jpg" class="w-100" alt="Product Image"></a>
+          <a href="teaching-details.html"><img src="static/picture/product-2-1.jpg" class="w-100" alt="Product Image"></a>
           <div class="cart-btn-group">
            <a href="#" class="vs-btn">点击查看详情</a>
           </div>
          </div>
          <div class="product-content">
-          <div class="text-yellow fs-xs mb-2">
-           <i class="fas fa-star"></i> 
-           <i class="fas fa-star"></i> 
-           <i class="fas fa-star"></i> 
-           <i class="far fa-star"></i> 
-           <i class="far fa-star"></i>
-          </div>
-          <h3 class="product-name text-normal font-theme fs-20 lh-base mb-2"><a class="text-inherit" href="teaching-details.html">In particular, the garbled words of lorem ipsum</a></h3>
-          <strong class="fs-18 text-theme2">$200.50</strong>
+          <h3 class="product-name text-normal font-theme fs-20 lh-base mb-2"><a class="text-inherit" href="teaching-details.html">{{item.tTitle}}</a></h3>
+          <p class="fs-8 text-theme2" style="font-size: 14px">{{item.tDesc}}</p>
          </div>
         </div>
        </div>
-       <div class="col-sm-6">
+      </div>
+      <div class="row" v-if='this.tag==="jq"'>
+       <div class="col-sm-6" v-for="(item,index) in jqList" :key="index">
         <div class="vs-product">
          <div class="product-img">
-          <a href="teaching-details.html"><img src="static/picture/product-2-3.jpg" class="w-100" alt="Product Image"></a>
+          <a href="teaching-details.html"><img src="static/picture/product-2-1.jpg" class="w-100" alt="Product Image"></a>
           <div class="cart-btn-group">
            <a href="#" class="vs-btn">点击查看详情</a>
           </div>
          </div>
          <div class="product-content">
-          <div class="text-yellow fs-xs mb-2">
-           <i class="fas fa-star"></i> 
-           <i class="fas fa-star"></i> 
-           <i class="fas fa-star"></i> 
-           <i class="far fa-star"></i> 
-           <i class="far fa-star"></i>
-          </div>
-          <h3 class="product-name text-normal font-theme fs-20 lh-base mb-2"><a class="text-inherit" href="teaching-details.html">McClintock's eye for detail certainly helped</a></h3>
-          <strong class="fs-18 text-theme2">$200.50</strong>
+          <h3 class="product-name text-normal font-theme fs-20 lh-base mb-2"><a class="text-inherit" href="teaching-details.html">{{item.tTitle}}</a></h3>
+          <p class="fs-8 text-theme2" style="font-size: 14px">{{item.tDesc}}</p>
          </div>
         </div>
        </div>
-       <div class="col-sm-6">
+      </div>
+      <div class="row" v-if='this.tag==="zs"'>
+       <div class="col-sm-6" v-for="(item,index) in zsList" :key="index">
         <div class="vs-product">
          <div class="product-img">
-          <a href="teaching-details.html"><img src="static/picture/product-2-4.jpg" class="w-100" alt="Product Image"></a>
+          <a href="teaching-details.html"><img src="static/picture/product-2-1.jpg" class="w-100" alt="Product Image"></a>
           <div class="cart-btn-group">
            <a href="#" class="vs-btn">点击查看详情</a>
           </div>
          </div>
          <div class="product-content">
-          <div class="text-yellow fs-xs mb-2">
-           <i class="fas fa-star"></i> 
-           <i class="fas fa-star"></i> 
-           <i class="fas fa-star"></i> 
-           <i class="far fa-star"></i> 
-           <i class="far fa-star"></i>
-          </div>
-          <h3 class="product-name text-normal font-theme fs-20 lh-base mb-2"><a class="text-inherit" href="teaching-details.html">Creation timelines for the standard passage vary</a></h3>
-          <strong class="fs-18 text-theme2">$200.50</strong>
-         </div>
-        </div>
-       </div>
-       <div class="col-sm-6">
-        <div class="vs-product">
-         <div class="product-img">
-          <a href="teaching-details.html"><img src="static/picture/product-2-5.jpg" class="w-100" alt="Product Image"></a>
-          <div class="cart-btn-group">
-           <a href="#" class="vs-btn">点击查看详情</a>
-          </div>
-         </div>
-         <div class="product-content">
-          <div class="text-yellow fs-xs mb-2">
-           <i class="fas fa-star"></i> 
-           <i class="fas fa-star"></i> 
-           <i class="fas fa-star"></i> 
-           <i class="far fa-star"></i> 
-           <i class="far fa-star"></i>
-          </div>
-          <h3 class="product-name text-normal font-theme fs-20 lh-base mb-2"><a class="text-inherit" href="teaching-details.html">So how did the classical Latin become so incoherent</a></h3>
-          <strong class="fs-18 text-theme2">$200.50</strong>
-         </div>
-        </div>
-       </div>
-       <div class="col-sm-6">
-        <div class="vs-product">
-         <div class="product-img">
-          <a href="teaching-details.html"><img src="static/picture/product-2-6.jpg" class="w-100" alt="Product Image"></a>
-          <div class="cart-btn-group">
-           <a href="#" class="vs-btn">点击查看详情</a>
-          </div>
-         </div>
-         <div class="product-content">
-          <div class="text-yellow fs-xs mb-2">
-           <i class="fas fa-star"></i> 
-           <i class="fas fa-star"></i> 
-           <i class="fas fa-star"></i> 
-           <i class="far fa-star"></i> 
-           <i class="far fa-star"></i>
-          </div>
-          <h3 class="product-name text-normal font-theme fs-20 lh-base mb-2"><a class="text-inherit" href="teaching-details.html">Whether a medieval typesetter chose to garble a well-known</a></h3>
-          <strong class="fs-18 text-theme2">$200.50</strong>
+          <h3 class="product-name text-normal font-theme fs-20 lh-base mb-2"><a class="text-inherit" href="teaching-details.html">{{item.tTitle}}</a></h3>
+          <p class="fs-8 text-theme2" style="font-size: 14px">{{item.tDesc}}</p>
          </div>
         </div>
        </div>
@@ -289,10 +227,10 @@
        <h3 class="sidebox-title-v2 h5">栏目</h3>
        <div class="vs-sidebox-v2">
         <ul class="vs-cat-list1">
-         <li><a href="blog.html">点位 <span class="cat-number">10</span></a></li>
-         <li><a href="blog.html">道具 <span class="cat-number">07</span></a></li>
-         <li><a href="blog.html">战术 <span class="cat-number">02</span></a></li>
-         <li><a href="blog.html">技巧 <span class="cat-number">05</span></a></li>
+         <li><a href="#" @click="selectTab('dw')">点位 <span class="cat-number">10</span></a></li>
+         <li><a href="#" @click="selectTab('dj')">道具 <span class="cat-number">07</span></a></li>
+         <li><a href="#" @click="selectTab('zs')">战术 <span class="cat-number">02</span></a></li>
+         <li><a href="#" @click="selectTab('jq')">技巧 <span class="cat-number">05</span></a></li>
         </ul>
        </div>
       </aside>
@@ -300,6 +238,7 @@
     </div>
    </div>
   </section>
+</div>
 <!--内容1结束-->
 
 <!--公共底部-->
@@ -389,21 +328,15 @@
               .then(res=>{
                if(res.status === 200){
                 this.classtabList=res.data
-                this.isLoading = false
                }
 
               })
      },
      //获取列表
      getNews(){
-      console.log("进入getNews")
-      console.log("传递的参数"+this.lId)
       axios.get('http://localhost:8080/news?op=querylist&'+this.lId)
               .then(res=>{
                if(res.status === 200){
-                this.newsList=res.data
-                console.log(this.newsList)
-                this.isLoading = false
                 this.lIdname = this.newsList[0].lIdname
                }
 
@@ -424,19 +357,143 @@
      }
     },
     mounted(){
-     var  url = decodeURI(window.location.href.split('?')[1]);
-     console.log("url="+url)
-     this.lId = url
      this.getNews()
      this.getClassTab()
     },
 
    })
    App.mount('#vueapp')
+   const teachApp = createApp({
+    data(){
+     return{
+      tag:'dw',
+      tagname:'点位',
+      teachList:{},
+      tagList:{},
+      dwList:{},
+      jqList:{},
+      djList:{},
+      zsList:{},
+      teachurl:'',
+      classname:'',
+      cId:'',
+
+     }
+    },
+    mounted(){
+     var teachurl = decodeURI(window.location.href.split('?')[1]);
+     this.teachurl = teachurl
+     console.log(teachurl)
+     this.getteachlist()
+     this.getClassTabname()
+     this.selectTab('dw')
+
+
+
+    },
+    methods:{
+    getteachlist(){
+      axios.get("http://localhost:8080/teaching?op=query&"+this.teachurl)
+      .then(res=>{
+       this.teachList = res.data
+       console.log("teachList:")
+       console.log(this.teachList)
+       this.tagList()
+      })
+     },
+     getClassTabname(){
+     axios.get('http://localhost:8080/classtab?op=queryname&'+this.teachurl)
+      .then(res=>{
+       if(res.status === 200){
+        this.classname = res.data[0].cCnname
+        this.cId = res.data[0].cId
+       }
+
+      })
+     },
+     tagList(){
+      console.log(222)
+      const  teachList = this.teachList
+      console.log(teachList)
+      const  tagList = {};
+      teachList.forEach(item=>{
+       const tTag = item.tTag
+       if(!tagList[tTag]){
+        tagList[tTag]=[];
+       }
+       tagList[tTag].push(item);
+      })
+      this.tagList=tagList
+      console.log("tagList:")
+      console.log(tagList)
+},
+
+     selectTab(tag){
+    //  this.tag = tag
+      console.log("11111111111111")
+      if(tag==='dw'){
+       console.log("22222222222222222")
+
+       const dwList1 = []
+       console.log("333333333")
+       console.log("size:"+this.teachList)
+       this.teachList.forEach(item=>{
+        console.log(item)
+        if (item.tTag==='dw'){
+         console.log("44444")
+         dwList1.push(item)
+        }
+
+       })
+       this.dwList=dwList1
+       this.tagname = dwList1[0].tTagname
+       console.log("dwList===========================")
+       console.log(this.dwList)
+     }
+      if(tag==='dj'){
+       const djList = []
+       this.teachList.forEach(item=>{
+        console.log(item)
+        if (item.tTag==='dj'){
+         djList.push(item)
+        }
+       })
+       this.djList=djList
+       this.tagname = djList[0].tTagname
+      }
+      if(tag==='zs'){
+       const zsList = []
+       this.teachList.forEach(item=>{
+        console.log(item)
+        if (item.tTag==='zs'){
+         zsList.push(item)
+        }
+       })
+       this.zsList=zsList
+       this.tagname = zsList[0].tTagname
+      }
+      if(tag==='jq'){
+       const jqList = []
+       this.teachList.forEach(item=>{
+        console.log(item)
+        if (item.tTag==='jq'){
+         jqList.push(item)
+        }
+       })
+       this.jqList=jqList
+       this.tagname = jqList[0].tTagname
+      }
+
+      }
+
+     },
+
+
+
+   })
+   teachApp.mount('#teachapp')
+
   </script>
-<!--内容1实例-->
-<script>
-<!-- TODO待完成代码-->
-</script>
+
 </body>
 </html>

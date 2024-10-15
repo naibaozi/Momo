@@ -17,4 +17,5 @@ public interface ClasstabDao {
     public boolean updateClasstab(Classtab classtab);
     //查
     public List<Classtab> getClasstabList();
+    public List<Classtab> getClasstabById(Integer cId);
 }

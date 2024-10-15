@@ -45,4 +45,11 @@ public class TeachingDaoImpl implements TeachingDao {
         List<Teaching> teachingList= jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(Teaching.class),cId);
         return teachingList;
     }
+
+    @Override
+    public List<Teaching> getCourseList(Integer tId) {
+        String sql= "SELECT * FROM teaching WHERE t_id =?";
+        List<Teaching> contextList=jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(Teaching.class),tId);
+        return contextList;
+    }
 }

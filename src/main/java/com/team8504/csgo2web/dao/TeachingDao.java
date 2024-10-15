@@ -12,4 +12,6 @@ public interface TeachingDao {
     public boolean updateTeaching(Teaching teaching);
     //查
     public List<Teaching> getTeachingList(Integer cId);
+
+    public List<Teaching> getCourseList(Integer tId);
 }

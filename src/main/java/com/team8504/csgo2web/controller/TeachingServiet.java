@@ -45,7 +45,17 @@ public class TeachingServiet extends HttpServlet {
                 String jsonString = JSON.toJSONString(teachingList);
                 response.setContentType("text/html;charset=utf-8");
                 response.getWriter().write(jsonString);
-
+            }
+            if(op.equals("queryCourse")){
+                String tidStr =request.getParameter("tId");
+                Integer tId = 1 ;
+                if (tidStr !=null && !tidStr.equals("")){
+                    tId = Integer.parseInt(tidStr);
+                }
+                List<Teaching> courseList = teachingDao.getCourseList(tId);
+                String jsonString = JSON.toJSONString(courseList);
+                response.setContentType("text/html;charset=utf-8");
+                response.getWriter().write(jsonString);
             }
         }
     }

@@ -54,7 +54,6 @@
        <ul>
         <li><a href="index.html">首页</a></li>
         <li><a href="about.html">关于我们</a></li>
-        <!--        TODO:修改相对应的代码完成带参数跳转指定内容-->
         <li class="mega-menu-wrap"><a href="#">教学&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
          <ul class="mega-menu">
           <!--            栏目渲染开始-->
@@ -70,7 +69,6 @@
           <!--            栏目渲染结束-->
          </ul>
         </li>
-        <!--        TODO：结束-->
 
 
         <li><a href="#">新闻&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
@@ -138,15 +136,23 @@
  <section class="vs-product-wrapper vs-product-layout2 space-top newsletter-pb">
    <div class="container">
     <div class="row">
-     <div class="col-lg-8">
-
+     <div class="col-lg">
+      <div class="row" v-if="this.tag===''">
+       <div class="col-sm" >
+        <div class="vs-product">
+         <div class="product-img">
+       <img :src="map" class="w-100" alt="Product Image">
+         </div>
+        </div>
+       </div>
+      </div>
       <div class="row" v-if='this.tag==="dw"'>
        <div class="col-sm-6" v-for="(item,index) in dwList" :key="index" >
         <div class="vs-product">
          <div class="product-img">
-          <a href="teaching-details.html"><img src="static/picture/product-2-1.jpg" class="w-100" alt="Product Image"></a>
+         <img :src="item.tImg" class="w-100" alt="Product Image">
           <div class="cart-btn-group">
-           <a href="#" class="vs-btn">点击查看详情</a>
+           <a v-bind:href="'teaching-details.html?'+this.teachurl+'&tId='+item.tId" class="vs-btn">点击查看详情</a>
           </div>
          </div>
          <div class="product-content">
@@ -156,14 +162,13 @@
         </div>
        </div>
       </div>
-
       <div class="row" v-if='this.tag==="dj"'>
        <div class="col-sm-6" v-for="(item,index) in djList" :key="index">
         <div class="vs-product">
          <div class="product-img">
-          <a href="teaching-details.html"><img src="static/picture/product-2-1.jpg" class="w-100" alt="Product Image"></a>
+       <img :src="item.tImg" class="w-100" alt="Product Image">
           <div class="cart-btn-group">
-           <a href="#" class="vs-btn">点击查看详情</a>
+           <a v-bind:href="'teaching-details.html?'+this.teachurl+'&tId='+item.tId" class="vs-btn">点击查看详情</a>
           </div>
          </div>
          <div class="product-content">
@@ -177,9 +182,9 @@
        <div class="col-sm-6" v-for="(item,index) in jqList" :key="index">
         <div class="vs-product">
          <div class="product-img">
-          <a href="teaching-details.html"><img src="static/picture/product-2-1.jpg" class="w-100" alt="Product Image"></a>
+          <img :src="item.tImg" class="w-100" alt="Product Image">
           <div class="cart-btn-group">
-           <a href="#" class="vs-btn">点击查看详情</a>
+           <a v-bind:href="'teaching-details.html?'+this.teachurl+'&tId='+item.tId" class="vs-btn">点击查看详情</a>
           </div>
          </div>
          <div class="product-content">
@@ -193,9 +198,9 @@
        <div class="col-sm-6" v-for="(item,index) in zsList" :key="index">
         <div class="vs-product">
          <div class="product-img">
-          <a href="teaching-details.html"><img src="static/picture/product-2-1.jpg" class="w-100" alt="Product Image"></a>
+          <img :src="item.tImg" class="w-100" alt="Product Image">
           <div class="cart-btn-group">
-           <a href="#" class="vs-btn">点击查看详情</a>
+           <a v-bind:href="'teaching-details.html?'+this.teachurl+'&tId='+item.tId" class="vs-btn">点击查看详情</a>
           </div>
          </div>
          <div class="product-content">
@@ -206,7 +211,7 @@
        </div>
       </div>
 <!--      分页功能还没做不要动-->
-      <div class="pagination-wrapper pagination-layout1 mt-lg-30 mb-30">
+      <div class="pagination-wrapper pagination-layout1 mt-lg-30 mb-30" v-if="this.tag==='dw' || this.tag==='dj' || this.tag==='jq' || this.tag==='zs'">
        <ul>
         <li><a href="#" class="active"><span class="text">1</span></a></li>
         <li><a href="#"><span class="text">2</span></a></li>
@@ -224,13 +229,13 @@
          <button type="submit"><i class="far fa-search"></i></button>
         </form>
        </div>
-       <h3 class="sidebox-title-v2 h5">栏目</h3>
+       <h3 class="sidebox-title-v2 h5">栏目-{{tagname}}</h3>
        <div class="vs-sidebox-v2">
         <ul class="vs-cat-list1">
-         <li><a href="#" @click="selectTab('dw')">点位 <span class="cat-number">10</span></a></li>
-         <li><a href="#" @click="selectTab('dj')">道具 <span class="cat-number">07</span></a></li>
-         <li><a href="#" @click="selectTab('zs')">战术 <span class="cat-number">02</span></a></li>
-         <li><a href="#" @click="selectTab('jq')">技巧 <span class="cat-number">05</span></a></li>
+         <li><a @click="selectTab('dw')">点位 <span class="cat-number"><i class="fas fa-angle-right"></i></span></a></li>
+         <li><a @click="selectTab('dj')">道具 <span class="cat-number"><i class="fas fa-angle-right"></i></span></a></li>
+         <li><a @click="selectTab('zs')">战术 <span class="cat-number"><i class="fas fa-angle-right"></i></span></a></li>
+         <li><a @click="selectTab('jq')">技巧 <span class="cat-number"><i class="fas fa-angle-right"></i></span></a></li>
         </ul>
        </div>
       </aside>
@@ -322,29 +327,17 @@
 <script>
    const {createApp}  = Vue
    const App = createApp({
-    methods:{
-     getClassTab(){
+    methods: {
+     getClassTab() {
       axios.get('http://localhost:8080/classtab?op=query')
-              .then(res=>{
-               if(res.status === 200){
-                this.classtabList=res.data
-               }
-
-              })
-     },
-     //获取列表
-     getNews(){
-      axios.get('http://localhost:8080/news?op=querylist&'+this.lId)
-              .then(res=>{
-               if(res.status === 200){
-                this.lIdname = this.newsList[0].lIdname
+              .then(res => {
+               if (res.status === 200) {
+                this.classtabList = res.data
                }
 
               })
      }
-
     },
-
     data(){
      return{
       classtabList: [],
@@ -352,12 +345,11 @@
       isLoading: true,
       lIdname:'',
       newsList: [],
-      tag:'点位'
+      tag:'dw'
 
      }
     },
     mounted(){
-     this.getNews()
      this.getClassTab()
     },
 
@@ -366,10 +358,12 @@
    const teachApp = createApp({
     data(){
      return{
-      tag:'dw',
-      tagname:'点位',
+      tag:'',
+      dt:'',
+      tagname:'地图',
+      map:{},
       teachList:{},
-      tagList:{},
+      tagList:[],
       dwList:{},
       jqList:{},
       djList:{},
@@ -386,7 +380,7 @@
      console.log(teachurl)
      this.getteachlist()
      this.getClassTabname()
-     this.selectTab('dw')
+     this.getmapList()
 
 
 
@@ -398,7 +392,6 @@
        this.teachList = res.data
        console.log("teachList:")
        console.log(this.teachList)
-       this.tagList()
       })
      },
      getClassTabname(){
@@ -411,32 +404,10 @@
 
       })
      },
-     tagList(){
-      console.log(222)
-      const  teachList = this.teachList
-      console.log(teachList)
-      const  tagList = {};
-      teachList.forEach(item=>{
-       const tTag = item.tTag
-       if(!tagList[tTag]){
-        tagList[tTag]=[];
-       }
-       tagList[tTag].push(item);
-      })
-      this.tagList=tagList
-      console.log("tagList:")
-      console.log(tagList)
-},
-
      selectTab(tag){
-    //  this.tag = tag
-      console.log("11111111111111")
+      this.tag = tag
       if(tag==='dw'){
-       console.log("22222222222222222")
-
        const dwList1 = []
-       console.log("333333333")
-       console.log("size:"+this.teachList)
        this.teachList.forEach(item=>{
         console.log(item)
         if (item.tTag==='dw'){
@@ -484,7 +455,17 @@
        this.tagname = jqList[0].tTagname
       }
 
-      }
+      },
+     getmapList(){
+     axios.get('http://localhost:8080/maps?op=query&'+this.teachurl)
+      .then(res=>{
+       if(res.status === 200){
+        this.map = res.data[0].mImg
+        console.log(this.map)
+       }
+
+      })
+     }
 
      },
 

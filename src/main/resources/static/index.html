@@ -56,9 +56,9 @@
           <!--TODO:修改相对应的代码完成带参数跳转指定内容-->
           <li class="mega-menu-wrap"><a href="#">教学&nbsp;&nbsp;<i class="fas fa-arrow-down"></i></a>
            <ul class="mega-menu">
-<!--            栏目渲染开始-->
+            <!--            栏目渲染开始-->
             <li v-for="(item,index) in classtabList" :key="index">
-             <a href="teaching.html">
+             <a v-bind:href="'/teaching.html?cId='+item.cId">
               <span>{{item.cName}}</span>
               <span style="float:right">{{item.cCnname}}</span>
              </a>
@@ -66,7 +66,7 @@
               <img :src ="item.cImg" alt="">
              </ul>
             </li>
-<!--            栏目渲染结束-->
+            <!--            栏目渲染结束-->
            </ul>
           </li>
           <!--TODO:结束-->

@@ -57,7 +57,7 @@
          <ul class="mega-menu">
           <!--            栏目渲染开始-->
           <li v-for="(item,index) in classtabList" :key="index">
-           <a href="teaching.html">
+           <a v-bind:href="'/teaching.html?cId='+item.cId">
             <span>{{item.cName}}</span>
             <span style="float:right">{{item.cCnname}}</span>
            </a>

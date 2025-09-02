@@ -27,7 +27,6 @@ public class UserinfoServiet extends HttpServlet {
     //注入userinfo对象
     @Resource
     UserinfoDao userinfoDao;
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("UserinfoServiet = " + request.getRequestURI());

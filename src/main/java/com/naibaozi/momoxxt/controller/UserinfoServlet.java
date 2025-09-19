@@ -2,7 +2,7 @@
  * @Author: j.c.zong 1258899660@qq.com
  * @Date: 2025-09-19 15:33:35
  * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-19 18:37:34
+ * @LastEditTime: 2025-09-19 18:57:30
  * @FilePath: src/main/java/com/naibaozi/momoxxt/controller/UserinfoServlet.java
  * @Description: 用户信息管理的 Servlet 控制器
  * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
@@ -73,6 +73,7 @@ public class UserinfoServlet extends HttpServlet {
                 sendErrorResponse(out, 400, "请指定操作类型(op参数)");
             }
         } catch (Exception e) {
+            //noinspection CallToPrintStackTrace
             e.printStackTrace();
             sendErrorResponse(out, 500, "服务器内部错误: " + e.getMessage());
         }
@@ -108,6 +109,7 @@ public class UserinfoServlet extends HttpServlet {
                 sendErrorResponse(out, 400, "请指定操作类型(op参数)");
             }
         } catch (Exception e) {
+            //noinspection CallToPrintStackTrace
             e.printStackTrace();
             sendErrorResponse(out, 500, "服务器内部错误: " + e.getMessage());
         }

@@ -8,12 +8,12 @@
         <version>3.3.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.team8504</groupId>
-    <artifactId>csgo2web</artifactId>
+    <groupId>com.naibaozi</groupId>
+    <artifactId>momoxxt</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>csgo2web</name>
-    <description>csgo2web</description>
+    <name>momoxxt</name>
+    <description>momoxxt</description>
     <url/>
     <licenses>
         <license/>

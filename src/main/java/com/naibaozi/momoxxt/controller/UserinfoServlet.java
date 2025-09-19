@@ -2,7 +2,7 @@
  * @Author: j.c.zong 1258899660@qq.com
  * @Date: 2025-09-19 15:33:35
  * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-19 18:57:30
+ * @LastEditTime: 2025-09-19 20:40:02
  * @FilePath: src/main/java/com/naibaozi/momoxxt/controller/UserinfoServlet.java
  * @Description: 用户信息管理的 Servlet 控制器
  * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
@@ -14,6 +14,7 @@ import com.alibaba.fastjson.JSON;
 import com.naibaozi.momoxxt.dao.UserDao;
 import com.naibaozi.momoxxt.entity.User;
 import com.naibaozi.momoxxt.util.CryptoUtil;
+import com.naibaozi.momoxxt.util.JwtUtil;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -38,7 +39,7 @@ public class UserinfoServlet extends HttpServlet {
     // 注入UserDao
     @Resource
     private UserDao userDao;
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -189,7 +190,7 @@ public class UserinfoServlet extends HttpServlet {
     }
 
     /**
-     * 用户登录（适配 AES 解密 + BCrypt 哈希校验）
+     * 用户登录（适配 AES 解密 + BCrypt 哈希校验 + JWT Token 生成）
      */
     private void login(HttpServletRequest request, HttpServletResponse response, PrintWriter out)
             throws ServletException, IOException {
@@ -207,7 +208,6 @@ public class UserinfoServlet extends HttpServlet {
         // 3. 根据用户名查询数据库（获取存储的 BCrypt 哈希值）
         User user = userDao.getUserByUsername(username.trim());
         if (user == null) {
-            // 模糊错误提示，避免暴露"用户名不存在"
             sendErrorResponse(out, 401, "用户名或密码错误");
             return;
         }
@@ -217,24 +217,24 @@ public class UserinfoServlet extends HttpServlet {
             String plainPwd = cryptoUtil.aesDecrypt(encryptedPwd);
 
             // 5. BCrypt 校验：明文密码 vs 数据库存储的哈希值
-            // （BCrypt 会自动提取哈希值中的盐值进行比对，无需手动处理）
             boolean isPwdMatch = cryptoUtil.bcryptMatches(plainPwd, user.getPassWord());
 
             if (isPwdMatch) {
-                // 6. 登录成功：存储用户信息到 Session
-                request.getSession().setAttribute("loginUser", user);
+                // 6. 登录成功：生成 JWT Token（传入用户ID和用户名）
+                String token = JwtUtil.generateToken(user.getId(), user.getUserName());
 
+                // 7. 构建响应：包含 Token 和用户信息（前端存储 Token 和用户信息）
                 Map<String, Object> result = new HashMap<>();
                 result.put("code", 200);
                 result.put("message", "登录成功");
-                result.put("data", user);
+                // 响应数据中添加 token 字段（前端会存到 wx.setStorageSync('token')）
+                result.put("token", token);
+                result.put("data", user); // 用户信息（不含密码，实体类需排除密码字段）
                 out.write(JSON.toJSONString(result));
             } else {
-                // 密码不匹配，同样模糊提示
                 sendErrorResponse(out, 401, "用户名或密码错误");
             }
         } catch (RuntimeException e) {
-            // 捕获解密失败异常（如加密字符串篡改、密钥不匹配）
             sendErrorResponse(out, 401, "密码解析失败，请重新输入");
         }
     }
@@ -327,9 +327,17 @@ public class UserinfoServlet extends HttpServlet {
         }
 
         try {
-            Long id = Long.parseLong(idStr);
+            Long updateId = Long.parseLong(idStr);
+            // 1. 获取当前登录用户ID（从拦截器传递的请求属性中）
+            Long currentUserId = (Long) request.getAttribute("currentUserId");
+
+            // 2. 权限校验：只能更新自己的信息（如果是管理员可跳过此步）
+            if (!updateId.equals(currentUserId)) {
+                sendErrorResponse(out, 403, "权限不足，仅能更新自己的信息");
+                return;
+            }
             // 检查用户是否存在
-            User user = userDao.getUserById(id);
+            User user = userDao.getUserById(updateId);
             if (user == null) {
                 sendErrorResponse(out, 404, "用户不存在");
                 return;
@@ -349,7 +357,7 @@ public class UserinfoServlet extends HttpServlet {
             if (phone != null) user.setPhone(phone);
             if (email != null) user.setEmail(email);
             if (statusStr != null) user.setStatus(Integer.parseInt(statusStr));
-            user.setId(id);
+            user.setId(updateId);
 
             // 执行更新
             Integer rows = userDao.updateUser(user);

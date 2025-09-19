@@ -1,3 +1,12 @@
+/**
+ * @Author: j.c.zong 1258899660@qq.com
+ * @Date: 2025-09-19 17:39:51
+ * @LastEditors: j.c.zong 1258899660@qq.com
+ * @LastEditTime: 2025-09-19 19:07:25
+ * @FilePath: src/main/java/com/naibaozi/momoxxt/util/CryptoUtil.java
+ * @Description: 
+ * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
+ */
 package com.naibaozi.momoxxt.util;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;

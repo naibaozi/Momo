@@ -2,13 +2,14 @@
  * @Author: j.c.zong 1258899660@qq.com
  * @Date: 2025-09-19 15:33:35
  * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-19 15:57:18
+ * @LastEditTime: 2025-09-19 20:34:29
  * @FilePath: src/main/java/com/naibaozi/momoxxt/entity/User.java
  * @Description: User实体类
  * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
  */
 package com.naibaozi.momoxxt.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 import lombok.ToString;
 import java.util.Date;
@@ -37,6 +38,8 @@ public class User {
     /**
      * 登录密码（对应数据库 password 字段）
      */
+    // 序列化时排除密码字段，避免返回给前端
+    @JSONField(serialize = false)
     private String passWord;
 
     /**

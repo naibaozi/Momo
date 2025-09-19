@@ -1,12 +1,17 @@
+/**
+ * @Author: j.c.zong 1258899660@qq.com
+ * @Date: 2025-09-19 15:33:35
+ * @LastEditors: j.c.zong 1258899660@qq.com
+ * @LastEditTime: 2025-09-19 15:57:17
+ * @FilePath: src/main/java/com/naibaozi/momoxxt/dao/UserDao.java
+ * @Description: 用户数据访问层（UserDAO）接口
+ * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
+ */
 package com.naibaozi.momoxxt.dao;
 
 import com.naibaozi.momoxxt.entity.User;
 import java.util.List;
 
-/**
- * 用户数据访问层接口
- * 定义用户管理相关的数据库操作（适配新 User 实体类）
- */
 public interface UserDao {
 
     /**

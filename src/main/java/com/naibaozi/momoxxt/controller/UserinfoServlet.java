@@ -1,3 +1,13 @@
+/**
+ * @Author: j.c.zong 1258899660@qq.com
+ * @Date: 2025-09-19 15:33:35
+ * @LastEditors: j.c.zong 1258899660@qq.com
+ * @LastEditTime: 2025-09-19 15:51:39
+ * @FilePath: src/main/java/com/naibaozi/momoxxt/controller/UserinfoServlet.java
+ * @Description: 用户信息管理的 Servlet 控制器
+ * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
+ */
+
 package com.naibaozi.momoxxt.controller;
 
 import com.alibaba.fastjson.JSON;
@@ -16,15 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 用户信息控制器
- * 处理用户相关的HTTP请求，实现CRUD操作（适配新 User 实体类）
- * Author: J.C.ZONG
- * Package: com.team8504.csgo2web.controller
- * Project: CSGO2WEB
- * Date: 2024/09/26/上午9:08
- * Version 1.0
- */
+
 @WebServlet("/userinfo/*")
 public class UserinfoServlet extends HttpServlet {
     // 注入UserDao

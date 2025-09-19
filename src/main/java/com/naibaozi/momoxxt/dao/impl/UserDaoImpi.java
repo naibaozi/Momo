@@ -1,3 +1,12 @@
+/**
+ * @Author: j.c.zong 1258899660@qq.com
+ * @Date: 2025-09-19 15:33:35
+ * @LastEditors: j.c.zong 1258899660@qq.com
+ * @LastEditTime: 2025-09-19 15:57:18
+ * @FilePath: src/main/java/com/naibaozi/momoxxt/dao/impl/UserDaoImpi.java
+ * @Description: UserDao现类
+ * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
+ */
 package com.naibaozi.momoxxt.dao.impl;
 
 import com.naibaozi.momoxxt.dao.UserDao;
@@ -20,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 用户数据访问层实现类
  * 基于JdbcTemplate实现CRUD操作（适配新 User 实体类）
  * @author naibaozi
  */

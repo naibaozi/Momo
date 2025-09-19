@@ -1,3 +1,12 @@
+/**
+ * @Author: j.c.zong 1258899660@qq.com
+ * @Date: 2025-09-19 15:33:35
+ * @LastEditors: j.c.zong 1258899660@qq.com
+ * @LastEditTime: 2025-09-19 15:57:18
+ * @FilePath: src/main/java/com/naibaozi/momoxxt/entity/User.java
+ * @Description: User实体类
+ * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
+ */
 package com.naibaozi.momoxxt.entity;
 
 import lombok.Data;
@@ -6,7 +15,6 @@ import java.util.Date;
 
 /**
  * 用户实体类
- * 与数据库 user 表字段对应，适配 UserDao 层操作
  */
 @Data
 @ToString
@@ -71,8 +79,7 @@ public class User {
      */
     private Date updatedAt;
 
-
-    // ==================== Set/Get 方法（Lombok 自动生成，此处仅展示） ====================
+    
     public Long getId() {
         return id;
     }

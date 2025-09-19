@@ -2,7 +2,7 @@
  * @Author: j.c.zong 1258899660@qq.com
  * @Date: 2025-09-19 15:33:35
  * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-19 15:57:17
+ * @LastEditTime: 2025-09-19 17:18:43
  * @FilePath: src/main/java/com/naibaozi/momoxxt/dao/UserDao.java
  * @Description: 用户数据访问层（UserDAO）接口
  * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
@@ -80,4 +80,8 @@ public interface UserDao {
      * @return 用户总数量
      */
     Integer countUser(String username, Integer status);
+    
+    
+    
+    
 }

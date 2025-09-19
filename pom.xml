@@ -78,6 +78,21 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- AES 加密依赖（与前端 crypto-js 适配） -->
+        <!-- BouncyCastle 加密库（解决PKCS7Padding支持问题） -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15to18</artifactId>
+            <version>1.77</version>
+        </dependency>
+
+        <!-- BCrypt 加密依赖（Spring 自带，也可单独引入） -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>5.7.8</version> <!-- 版本需与Spring兼容 -->
+        </dependency>
+
 
     </dependencies>
 

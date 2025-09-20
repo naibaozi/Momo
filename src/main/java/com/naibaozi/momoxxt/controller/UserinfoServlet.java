@@ -1,3 +1,12 @@
+/**
+ * @Author: j.c.zong 1258899660@qq.com
+ * @Date: 2025-09-19 15:33:35
+ * @LastEditors: j.c.zong 1258899660@qq.com
+ * @LastEditTime: 2025-09-20 21:08:50
+ * @FilePath: src/main/java/com/naibaozi/momoxxt/controller/UserinfoServlet.java
+ * @Description: 
+ * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
+ */
 package com.naibaozi.momoxxt.controller;
 
 import com.alibaba.fastjson.JSON;

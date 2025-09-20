@@ -29,20 +29,12 @@ public class User {
     @JSONField(serialize = false)
     private String passWord;
 
-    /**
-     * 真实姓名
-     */
-    private String realName;
 
     /**
      * 头像URL
      */
     private String avatar;
 
-    /**
-     * 角色（1-普通用户，2-管理员等，可关联sys_dict）
-     */
-    private Integer role;
 
     /**
      * 手机号
@@ -62,12 +54,12 @@ public class User {
     /**
      * 注册时间
      */
-    private Date createdAt;
+    private Date createAt;
 
     /**
      * 信息更新时间
      */
-    private Date updatedAt;
+    private Date updateAt;
 
     // 以下为关联扩展字段（非数据库字段，用于查询关联数据）
     /**

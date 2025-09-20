@@ -2,7 +2,7 @@
  * @Author: j.c.zong 1258899660@qq.com
  * @Date: 2025-09-19 15:33:35
  * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-19 17:18:43
+ * @LastEditTime: 2025-09-20 14:07:59
  * @FilePath: src/main/java/com/naibaozi/momoxxt/dao/UserDao.java
  * @Description: 用户数据访问层（UserDAO）接口
  * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
@@ -11,6 +11,7 @@ package com.naibaozi.momoxxt.dao;
 
 import com.naibaozi.momoxxt.entity.User;
 import java.util.List;
+import java.util.Map;
 
 public interface UserDao {
 
@@ -54,14 +55,14 @@ public interface UserDao {
      * @param newPassword 新密码
      * @return 受影响的行数
      */
-    Integer updatePassword(Integer id, String newPassword);
+    Integer updatePassword(Long id, String newPassword);
 
     /**
      * 根据ID删除用户
      * @param id 用户ID
      * @return 受影响的行数
      */
-    Integer deleteUser(Integer id);
+    Integer deleteUser(Long id);
 
     /**
      * 分页查询用户（带条件，包含新字段）
@@ -80,6 +81,27 @@ public interface UserDao {
      * @return 用户总数量
      */
     Integer countUser(String username, Integer status);
+
+    /**
+     * 查询用户及关联的订单统计
+     * @param userId 用户ID
+     * @return 包含用户信息和订单数量的Map
+     */
+    Map<String, Object> getUserWithOrderStats(Long userId);
+
+    /**
+     * 查询用户发布的笔记数量
+     * @param userId 用户ID
+     * @return 笔记数量
+     */
+    Integer countUserNotes(Long userId);
+
+    /**
+     * 查询用户的未读消息数量
+     * @param userId 用户ID
+     * @return 未读消息数
+     */
+    Integer countUnreadNotices(Long userId);
     
     
     

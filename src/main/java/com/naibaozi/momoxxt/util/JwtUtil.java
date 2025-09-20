@@ -2,7 +2,16 @@
  * @Author: j.c.zong 1258899660@qq.com
  * @Date: 2025-09-19 20:31:58
  * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-19 20:32:03
+ * @LastEditTime: 2025-09-20 10:39:14
+ * @FilePath: src/main/java/com/naibaozi/momoxxt/util/JwtUtil.java
+ * @Description: 
+ * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
+ */
+/**
+ * @Author: j.c.zong 1258899660@qq.com
+ * @Date: 2025-09-19 20:31:58
+ * @LastEditors: j.c.zong 1258899660@qq.com
+ * @LastEditTime: 2025-09-20 10:39:14
  * @FilePath: src/main/java/com/naibaozi/momoxxt/util/JwtUtil.java
  * @Description: Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved.
  */

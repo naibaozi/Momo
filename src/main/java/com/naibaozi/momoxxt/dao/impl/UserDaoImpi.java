@@ -2,7 +2,7 @@
  * @Author: j.c.zong 1258899660@qq.com
  * @Date: 2025-09-19 15:33:35
  * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-19 17:18:42
+ * @LastEditTime: 2025-09-20 14:09:31
  * @FilePath: src/main/java/com/naibaozi/momoxxt/dao/impl/UserDaoImpi.java
  * @Description: UserDao现类
  * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
@@ -27,6 +27,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 基于JdbcTemplate实现CRUD操作（适配新 User 实体类）
@@ -134,14 +135,14 @@ public class UserDaoImpi implements UserDao {
     }
 
     @Override
-    public Integer updatePassword(Integer id, String newPassword) {
+    public Integer updatePassword(Long userId, String newPassword) {
         // 6. 密码更新：适配实体类 passWord 字段（逻辑不变）
         String sql = "UPDATE `user` SET password = ? WHERE id = ?";
         return jdbcTemplate.update(sql, newPassword, id);
     }
 
     @Override
-    public Integer deleteUser(Integer id) {
+    public Integer deleteUser(Long userId) {
         // 7. 删除逻辑不变
         String sql = "DELETE FROM `user` WHERE id = ?";
         return jdbcTemplate.update(sql, id);
@@ -199,6 +200,33 @@ public class UserDaoImpi implements UserDao {
                 params,
                 Integer.class
         );
+    }
+
+
+    @Override
+    public Map<String, Object> getUserWithOrderStats(Long userId) {
+        String sql = "SELECT " +
+                "u.*, " +
+                "COUNT(o.id) AS order_count, " +
+                "SUM(CASE WHEN o.order_status = 0 THEN 1 ELSE 0 END) AS pending_pay_count, " +
+                "SUM(CASE WHEN o.order_status = 1 THEN 1 ELSE 0 END) AS pending_ship_count " +
+                "FROM user_base u " +
+                "LEFT JOIN mall_order o ON u.id = o.user_id " +
+                "WHERE u.id = ? " +
+                "GROUP BY u.id";
+        return jdbcTemplate.queryForMap(sql, userId);
+    }
+
+    @Override
+    public Integer countUserNotes(Long userId) {
+        String sql = "SELECT COUNT(id) FROM community_note WHERE user_id = ? AND status = 1";
+        return jdbcTemplate.queryForObject(sql, Integer.class, userId);
+    }
+
+    @Override
+    public Integer countUnreadNotices(Long userId) {
+        String sql = "SELECT COUNT(id) FROM notice WHERE user_id = ? AND is_read = 0";
+        return jdbcTemplate.queryForObject(sql, Integer.class, userId);
     }
     
     

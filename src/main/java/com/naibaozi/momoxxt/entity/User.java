@@ -14,52 +14,57 @@ public class User {
     private Long id;
 
     /**
-     * 微信开放ID
+     * 微信开放ID(对应open_id)
      */
     private String openId;
 
     /**
-     * 登录用户名
+     * 登录用户名username
      */
     private String userName;
 
     /**
-     * 登录密码（序列化时排除）
+     * 昵称nickname
+     */
+    private String nickName;
+
+    /**
+     * 登录密码（序列化时排除）password
      */
     @JSONField(serialize = false)
     private String passWord;
 
 
     /**
-     * 头像URL
+     * 头像URL avatar
      */
     private String avatar;
 
 
     /**
-     * 手机号
+     * 手机号 phone
      */
     private String phone;
 
     /**
-     * 邮箱
+     * 邮箱 email
      */
     private String email;
 
     /**
-     * 状态（0-禁用，1-正常，对应sys_dict的user_status类型）
+     * 状态（0-禁用，1-正常） status
      */
     private Integer status;
 
     /**
-     * 注册时间
+     * 注册时间 create_time
      */
-    private Date createAt;
+    private Date createTime;
 
     /**
-     * 信息更新时间
+     * 信息更新时间 update_time
      */
-    private Date updateAt;
+    private Date updateTime;
 
     // 以下为关联扩展字段（非数据库字段，用于查询关联数据）
     /**

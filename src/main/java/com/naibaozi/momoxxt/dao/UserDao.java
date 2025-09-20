@@ -2,7 +2,7 @@
  * @Author: j.c.zong 1258899660@qq.com
  * @Date: 2025-09-19 15:33:35
  * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-20 14:07:59
+ * @LastEditTime: 2025-09-20 18:13:33
  * @FilePath: src/main/java/com/naibaozi/momoxxt/dao/UserDao.java
  * @Description: 用户数据访问层（UserDAO）接口
  * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
@@ -16,7 +16,7 @@ import java.util.Map;
 public interface UserDao {
 
     /**
-     * 查询所有用户信息（包含 realName、role、phone 等新字段）
+     * 查询所有用户信息（包含订单数、笔记数等扩展字段）
      * @return 用户列表
      */
     List<User> getUserinfoList();
@@ -36,19 +36,18 @@ public interface UserDao {
     User getUserByUsername(String username);
 
     /**
-     * 新增用户（包含 realName、role、phone 等新字段）
-     * @param user 用户对象（需设置 userName、passWord、realName 等）
+     * 新增用户（包含openId、avatar等字段）
+     * @param user 用户对象（需设置userName、passWord等）
      * @return 新增成功返回自增ID，失败返回0
      */
     Integer addUser(User user);
 
     /**
-     * 更新用户信息（包含 realName、role、phone 等，不包含密码）
+     * 更新用户信息（包含openId、phone等，不包含密码）
      * @param user 用户对象
      * @return 受影响的行数
      */
     Integer updateUser(User user);
-
     /**
      * 更新用户密码（适配 User 实体类的 passWord 字段）
      * @param id 用户ID
@@ -102,8 +101,14 @@ public interface UserDao {
      * @return 未读消息数
      */
     Integer countUnreadNotices(Long userId);
-    
-    
-    
-    
+
+    /**
+     * 根据邮箱查询用户
+     * @param email 邮箱地址
+     * @return 用户对象，不存在则返回null
+     */
+    User getUserByEmail(String email);
+
+
+    User getUserByOpenId(String openid);
 }

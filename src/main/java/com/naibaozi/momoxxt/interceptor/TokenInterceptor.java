@@ -1,20 +1,3 @@
-/**
- * @Author: j.c.zong 1258899660@qq.com
- * @Date: 2025-09-19 20:36:00
- * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-20 10:39:14
- * @FilePath: src/main/java/com/naibaozi/momoxxt/interceptor/TokenInterceptor.java
- * @Description: 
- * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
- */
-/**
- * @Author: j.c.zong 1258899660@qq.com
- * @Date: 2025-09-19 20:36:00
- * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-20 10:39:14
- * @FilePath: src/main/java/com/naibaozi/momoxxt/interceptor/TokenInterceptor.java
- * @Description: Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved.
- */
 package com.naibaozi.momoxxt.interceptor;
 
 import com.alibaba.fastjson.JSON;
@@ -35,9 +18,12 @@ import java.util.Map;
 public class TokenInterceptor implements Filter {
 
     // 无需 Token 验证的接口（白名单）
+    // 新增 sendEmailCode 到白名单
     private static final String[] WHITE_LIST = {
-            "login",   // 登录接口
-            "add"      // 注册接口
+            "login",         // 登录接口
+            "add",           // 注册接口
+            "sendEmailCode",  // 发送验证码接口
+            "wechatLogin" //微信登录接口
     };
 
     @Override

@@ -11,7 +11,7 @@
     <groupId>com.naibaozi</groupId>
     <artifactId>momoxxt</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>momoxxt</name>
     <description>momoxxt</description>
     <url/>
@@ -141,6 +141,14 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.markhub.vueblog.VueblogApplication</mainClass>
+                </configuration>
+                <version>1.5.9.RELEASE</version>
             </plugin>
         </plugins>
     </build>

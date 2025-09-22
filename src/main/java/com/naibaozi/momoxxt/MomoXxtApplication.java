@@ -2,7 +2,7 @@
  * @Author: j.c.zong 1258899660@qq.com
  * @Date: 2025-09-19 15:33:35
  * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-19 15:59:18
+ * @LastEditTime: 2025-09-21 14:18:27
  * @FilePath: src/main/java/com/naibaozi/momoxxt/MomoXxtApplication.java
  * @Description: 入口函数
  * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
@@ -11,6 +11,7 @@ package com.naibaozi.momoxxt;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
@@ -22,5 +23,10 @@ public class MomoXxtApplication {
         System.out.println("MomoXxtApplication started");
 
     }
+    // 打包 spring boot项目
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(this.getClass());
+    }
+
 
 }

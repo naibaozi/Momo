@@ -2,7 +2,7 @@
  * @Author: j.c.zong 1258899660@qq.com
  * @Date: 2025-09-19 15:33:35
  * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-23 09:10:02
+ * @LastEditTime: 2025-09-25 08:20:58
  * @FilePath: src/main/java/com/naibaozi/momoxxt/controller/UserController.java
  * @Description: 用户核心功能控制器（登录、注册、信息管理等）
  * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
@@ -45,6 +45,10 @@ public class UserController extends HttpServlet {
     // 注入UserDao
     @Resource
     private UserDao userDao;
+    
+    //注入JwtUtil
+    @Resource 
+    private  JwtUtil jwtUtil;
 
     // 注入邮件工具
     @Resource
@@ -55,7 +59,7 @@ public class UserController extends HttpServlet {
     private VerificationCodeService verificationCodeService;
 
     // 邮箱正则表达式
-    private static final String EMAIL_REGEX = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$";
+    public static String EMAIL_REGEX = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -299,7 +303,7 @@ public class UserController extends HttpServlet {
             }
 
             // 5. 生成JWT Token（与账号密码登录逻辑一致）
-            String token = JwtUtil.generateToken(user.getId(), user.getUserName());
+            String token = jwtUtil.generateToken(user.getId(), user.getUserName());
 
             // 6. 返回登录成功结果（包含token和用户信息）
             Map<String, Object> data = new HashMap<>();
@@ -462,7 +466,7 @@ public class UserController extends HttpServlet {
 
             if (isPwdMatch) {
                 // 6. 登录成功：生成 JWT Token（传入用户ID和用户名）
-                String token = JwtUtil.generateToken(user.getId(), user.getUserName());
+                String token = jwtUtil.generateToken(user.getId(), user.getUserName());
 
                 // 7. 构建响应数据
                 Map<String, Object> data = new HashMap<>();

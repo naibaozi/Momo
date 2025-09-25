@@ -2,13 +2,14 @@
  * @Author: j.c.zong 1258899660@qq.com
  * @Date: 2025-09-19 15:33:35
  * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-20 18:13:33
+ * @LastEditTime: 2025-09-25 10:35:34
  * @FilePath: src/main/java/com/naibaozi/momoxxt/dao/UserDao.java
  * @Description: 用户数据访问层（UserDAO）接口
  * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
  */
 package com.naibaozi.momoxxt.dao;
 
+import com.naibaozi.momoxxt.entity.ConsultOrder;
 import com.naibaozi.momoxxt.entity.User;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,7 @@ public interface UserDao {
      * @param id 用户ID
      * @return 单个用户对象，查询不到则返回null
      */
-    User getUserById(Long id);
+     User getUserById(Long id);
 
     /**
      * 根据用户名查询用户（适配 userName → 数据库 username 字段）
@@ -111,4 +112,58 @@ public interface UserDao {
 
 
     User getUserByOpenId(String openid);
+
+
+
+    List<User> searchUsers(Integer pageNum, Integer pageSize, String keyword);
+    
+    
+    
+    Integer countSearchUsers(String keyword);
+
+    /**
+     * 根据角色查询用户ID列表（用于获取所有医生角色用户）
+     * @param role 角色值（如2=医生）
+     * @return 用户ID列表
+     */
+    List<Long> getUserIdListByRole(int role);
+
+    /**
+     * 分页查询待审核医生列表
+     * @param pendingUserIds 待审核用户ID列表
+     * @param offset 分页偏移量
+     * @param pageSize 每页条数
+     * @return 待审核医生列表（User实体，不含敏感字段）
+     */
+    List<User> getPendingDoctorListByPage(List<Long> pendingUserIds, int offset, int pageSize);
+
+
+
+    // ------------------------------ 补充医生审核相关方法 ------------------------------
+    /**
+     * 根据审核ID（即用户ID）查询医生审核详情
+     * 用于前端审核详情页，返回医生基础信息+身份证照片（不含敏感字段如密码）
+     * @param auditId 审核ID（对应医生的user_id）
+     * @return 医生审核详情（User实体，含realName、gender、idCardFrontUrl等）
+     */
+    User getDoctorAuditDetail(Long auditId);
+
+    /**
+     * 更新医生的审核状态
+     * 用于审核通过/拒绝操作，更新user_base表的audit_status字段
+     * @param userId 医生用户ID
+     * @param auditStatus 审核状态（0=待审核，1=已通过，2=已拒绝）
+     * @return 受影响的行数（1=成功，0=失败）
+     */
+    Integer updateDoctorAuditStatus(Long userId, Integer auditStatus);
+
+    /**
+     * 统计待审核医生总数
+     * 用于分页查询时计算总页数（totalCount）
+     * @param pendingUserIds 待审核医生的用户ID列表
+     * @return 待审核医生总数
+     */
+    Integer getPendingDoctorTotalCount(List<Long> pendingUserIds);
+
+    
 }

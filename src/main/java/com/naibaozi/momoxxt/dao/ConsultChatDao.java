@@ -2,7 +2,16 @@
  * @Author: j.c.zong 1258899660@qq.com
  * @Date: 2025-09-23 09:17:02
  * @LastEditors: j.c.zong 1258899660@qq.com
- * @LastEditTime: 2025-09-23 09:17:02
+ * @LastEditTime: 2025-09-25 08:15:39
+ * @FilePath: src/main/java/com/naibaozi/momoxxt/dao/ConsultChatDao.java
+ * @Description: 
+ * Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved. 
+ */
+/**
+ * @Author: j.c.zong 1258899660@qq.com
+ * @Date: 2025-09-23 09:17:02
+ * @LastEditors: j.c.zong 1258899660@qq.com
+ * @LastEditTime: 2025-09-25 08:15:39
  * @FilePath: src/main/java/com/naibaozi/momoxxt/dao/ConsultChatDao.java
  * @Description: Copyright (c) 2025 by j.c.zong 1258899660@qq.com, All Rights Reserved.
  */
